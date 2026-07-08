@@ -1,0 +1,2303 @@
+ /*=========================================================
+        FLORENCE HOSPITAL ADMINISTRATIVE HEADQUARTERS
+                    PROFESSIONAL STYLE.CSS
+        PART 1 - RESET | VARIABLES | HEADER | NAVIGATION
+=========================================================*/
+
+
+/*==============================
+        GOOGLE FONT
+==============================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/*==============================
+            RESET
+==============================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f5f8fc;
+    color:#333;
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+
+/*==============================
+        VARIABLES
+==============================*/
+
+:root{
+
+    --primary:#0B6EBD;
+    --secondary:#0A4C91;
+    --accent:#17A2B8;
+    --light:#ffffff;
+    --dark:#1d1d1d;
+    --gray:#777;
+    --light-gray:#f2f6fb;
+    --border:#dfe7ef;
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+    --radius:8px;
+    --transition:.35s ease;
+
+}
+
+
+/*==============================
+        GLOBAL
+==============================*/
+
+.container{
+
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+
+}
+
+section{
+
+    padding:90px 0;
+
+}
+
+h1{
+
+    font-size:42px;
+    margin-bottom:20px;
+    color:var(--secondary);
+
+}
+
+h2{
+
+    font-size:30px;
+    color:var(--secondary);
+    margin-bottom:15px;
+
+}
+
+h3{
+
+    font-size:22px;
+    margin-bottom:12px;
+
+}
+
+p{
+
+    color:#555;
+    margin-bottom:20px;
+
+}
+
+img{
+
+    width:100%;
+    display:block;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+
+/*==============================
+        BUTTONS
+==============================*/
+
+.btn{
+
+    display:inline-block;
+    background:var(--primary);
+    color:#fff;
+    padding:13px 28px;
+    border-radius:50px;
+    transition:var(--transition);
+    font-weight:600;
+    border:none;
+    cursor:pointer;
+
+}
+
+.btn:hover{
+
+    background:var(--secondary);
+    transform:translateY(-3px);
+
+}
+
+.btn-secondary{
+
+    display:inline-block;
+    padding:13px 28px;
+    background:#fff;
+    color:var(--primary);
+    border-radius:50px;
+    border:2px solid var(--primary);
+    transition:var(--transition);
+    font-weight:600;
+
+}
+
+.btn-secondary:hover{
+
+    background:var(--primary);
+    color:#fff;
+
+}
+
+
+/*==============================
+            HEADER
+==============================*/
+
+header{
+
+    width:100%;
+    position:relative;
+
+}
+
+
+/*==============================
+        NAVIGATION
+==============================*/
+
+nav{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+
+    background:#fff;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 5%;
+
+    box-shadow:0 5px 25px rgba(0,0,0,.08);
+
+    z-index:99999;
+
+}
+
+
+/*==============================
+            LOGO
+==============================*/
+
+.logo{
+
+    width:320px;
+
+}
+
+.logo h2{
+
+    font-size:21px;
+    color:var(--primary);
+    font-weight:700;
+    line-height:1.4;
+
+}
+
+
+/*==============================
+        NAV LINKS
+==============================*/
+
+.nav-links{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+}
+
+.nav-links li{
+
+    position:relative;
+
+}
+
+.nav-links li a{
+
+    display:block;
+    color:#333;
+    font-size:15px;
+    font-weight:500;
+    padding:30px 14px;
+    transition:.3s;
+
+}
+
+.nav-links li a:hover{
+
+    color:var(--primary);
+
+}
+
+
+/*==============================
+        DROPDOWN
+==============================*/
+
+.dropdown-menu{
+
+    position:absolute;
+    left:0;
+    top:100%;
+
+    width:260px;
+
+    background:#fff;
+
+    border-radius:8px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(15px);
+
+    transition:.35s;
+
+}
+
+.dropdown-menu li{
+
+    width:100%;
+
+}
+
+.dropdown-menu li a{
+
+    padding:14px 18px;
+    border-bottom:1px solid #eee;
+    color:#444;
+    font-size:14px;
+
+}
+
+.dropdown-menu li:last-child a{
+
+    border:none;
+
+}
+
+.dropdown-menu li a:hover{
+
+    background:#f3f8fd;
+    color:var(--primary);
+    padding-left:25px;
+
+}
+
+.dropdown:hover .dropdown-menu{
+
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+
+}
+
+
+/*==============================
+        NAV BUTTON
+==============================*/
+
+.nav-button{
+
+    margin-left:20px;
+
+}
+
+.nav-button .btn{
+    padding:12px 24px;
+}
+
+
+/*==============================
+        HERO SECTION
+==============================*/
+
+.hero{
+    margin-top:90px;
+    height:92vh;
+    background:
+        linear-gradient(rgba(0,61,122,.70),
+        rgba(0,61,122,.70)),
+        url("images/Florence Hospital Building.jpg")
+        center center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    color:#fff;
+}
+
+.hero-content{
+    width:900px;
+    max-width:90%;
+}
+
+.hero-content h1{
+    color:#fff;
+    font-size:58px;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.hero-content p{
+    color:#f5f5f5;
+    font-size:18px;
+    margin-bottom:35px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.hero-buttons .btn{
+    background:#fff;
+    color:var(--primary);
+}
+
+.hero-buttons .btn:hover{
+    background:var(--primary);
+    color:#fff;
+}
+
+.hero-buttons .btn-secondary{
+    background:transparent;
+    border:2px solid #fff;
+    color:#fff;
+}
+
+.hero-buttons .btn-secondary:hover{
+    background:#fff;
+    color:var(--primary);
+}
+
+
+/*==============================
+        RESPONSIVE NAV
+==============================*/
+
+@media(max-width:1200px){
+
+nav{
+    flex-wrap:wrap;
+    height:auto;
+    padding:15px;
+}
+
+.logo{
+    width:100%;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.nav-links{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.nav-links li a{
+    padding:15px;
+}
+
+.nav-button{
+    margin:20px auto 0;
+}
+
+.hero-content h1{
+    font-size:45px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+    height:auto;
+    padding:120px 0 80px;
+}
+
+.hero-content h1{
+    font-size:36px;
+}
+
+.hero-content p{
+    font-size:16px;
+}
+
+.nav-links{
+    flex-direction:column;
+    gap:0;
+}
+
+.dropdown-menu{
+    position:relative;
+    width:100%;
+    display:none;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+    box-shadow:none;
+}
+
+.dropdown:hover .dropdown-menu{
+    display:block;
+}
+
+}
+
+/*=========================================================
+                HERO SECTION
+=========================================================*/
+
+.hero{
+    height:90vh;
+    background:
+    linear-gradient(rgba(5,45,92,.70),rgba(5,45,92,.70)),
+    url("images/Florence Hospital Building.jpg") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#fff;
+    padding:0 20px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero-content h1{
+    font-size:60px;
+    font-weight:700;
+    margin-bottom:25px;
+    color:#fff;
+    text-shadow:2px 2px 10px rgba(0,0,0,.4);
+}
+
+.hero-content p{
+    font-size:19px;
+    line-height:1.9;
+    margin-bottom:35px;
+    color:#f5f5f5;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.hero-buttons .btn{
+    background:#0B6EBD;
+    color:#fff;
+    padding:15px 35px;
+    border-radius:50px;
+    transition:.4s;
+}
+
+.hero-buttons .btn:hover{
+    background:#084f8c;
+    transform:translateY(-5px);
+}
+
+.hero-buttons .btn-secondary{
+    background:transparent;
+    color:#fff;
+    border:2px solid #fff;
+    padding:15px 35px;
+    border-radius:50px;
+    transition:.4s;
+}
+
+.hero-buttons .btn-secondary:hover{
+    background:#fff;
+    color:#0B6EBD;
+}
+
+
+/*=========================================================
+                GENERAL SECTION STYLE
+=========================================================*/
+
+section{
+    padding:90px 10%;
+}
+
+section h1,
+section h2{
+    text-align:center;
+    color:#0A4C91;
+    margin-bottom:20px;
+}
+
+section p{
+    color:#555;
+    font-size:17px;
+    line-height:1.9;
+    text-align:center;
+    max-width:1000px;
+    margin:auto;
+}
+
+
+/*=========================================================
+                WELCOME SECTION
+=========================================================*/
+
+#welcome{
+    background:#ffffff;
+}
+
+#welcome h2{
+    font-size:38px;
+}
+
+#welcome p{
+    margin-top:25px;
+}
+
+
+/*=========================================================
+                ABOUT US
+=========================================================*/
+
+#about-us{
+    background:#f8fbff;
+}
+
+#about-us h1{
+    font-size:42px;
+}
+
+#about-us p{
+    margin-top:25px;
+}
+
+
+/*=========================================================
+                MISSION & VISION
+=========================================================*/
+
+#mission,
+#vision{
+    background:#fff;
+    margin:40px auto;
+    max-width:1100px;
+    border-left:6px solid #0B6EBD;
+    border-radius:10px;
+    padding:45px;
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+#mission:hover,
+#vision:hover{
+    transform:translateY(-8px);
+}
+
+#mission h2,
+#vision h2{
+    text-align:left;
+    color:#0A4C91;
+}
+
+#mission p,
+#vision p{
+    text-align:left;
+}
+
+
+/*=========================================================
+                CORE VALUES
+=========================================================*/
+
+#core-values{
+    background:#eef7fd
+}
+
+#core-values h2{
+    margin-bottom:45px;
+}
+
+#core-values ul{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+#core-values li{
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    font-weight:600;
+    transition:.35s;
+    text-align:center;
+}
+
+#core-values li:hover{
+    background:#0B6EBD;
+    color:#fff;
+    transform:translateY(-8px);
+}
+
+
+/*=========================================================
+                WHY CHOOSE US
+=========================================================*/
+
+#why-choose-us{
+    background:#ffffff;
+}
+
+#why-choose-us h2{
+    font-size:38px;
+}
+
+#why-choose-us p{
+    margin-top:30px;
+}
+
+#why-choose-us::after{
+    content:"";
+    display:block;
+    width:120px;
+    height:5px;
+    background:#0B6EBD;
+    margin:40px auto 0;
+    border-radius:10px;
+}
+
+
+/*=========================================================
+                RESPONSIVE
+=========================================================*/
+
+@media(max-width:992px){
+
+.hero{
+    height:auto;
+    padding:140px 20px 100px;
+}
+
+.hero-content h1{
+    font-size:46px;
+}
+
+.hero-content p{
+    font-size:17px;
+}
+
+section{
+    padding:70px 6%;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+    font-size:34px;
+}
+
+.hero-content p{
+    font-size:16px;
+}
+
+.hero-buttons{
+    flex-direction:column;
+    align-items:center;
+}
+
+.hero-buttons a{
+    width:240px;
+}
+
+#mission,
+#vision{
+    padding:30px;
+}
+
+#core-values ul{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:480px){
+
+.hero-content h1{
+    font-size:28px;
+}
+
+#welcome h2,
+#why-choose-us h2{
+    font-size:30px;
+}
+
+#about-us h1{
+    font-size:34px;
+}
+
+}
+/*=========================================================
+                    HISTORY SECTION
+=========================================================*/
+
+#history{
+    max-width:1200px;
+    margin:80px auto;
+    padding:60px;
+    background:#ffffff;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+#history h2{
+    font-size:2.2rem;
+    color:#0b6fb8;
+    margin-bottom:25px;
+}
+
+#history p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.9;
+    color:#555;
+    font-size:17px;
+}
+
+
+/*=========================================================
+                MISSION & VISION
+=========================================================*/
+
+#mission-vision{
+    max-width:1200px;
+    margin:80px auto;
+    padding:70px 40px;
+}
+
+#mission-vision h2{
+    text-align:center;
+    font-size:2.3rem;
+    color:#0b6fb8;
+    margin-bottom:50px;
+}
+
+#mission-vision{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:35px;
+}
+
+.mission,
+.vision{
+    background:#fff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.4s;
+}
+
+.mission:hover,
+.vision:hover{
+    transform:translateY(-10px);
+}
+
+.mission{
+    border-top:6px solid #0b6fb8;
+}
+
+.vision{
+    border-top:6px solid #009688;
+}
+
+.mission h3,
+.vision h3{
+    color:#0b6fb8;
+    margin-bottom:20px;
+    font-size:1.7rem;
+}
+
+.mission p,
+.vision p{
+    color:#555;
+    line-height:1.8;
+}
+
+
+/*=========================================================
+            ADMINISTRATIVE HEADQUARTERS
+=========================================================*/
+
+#administration{
+    max-width:1200px;
+    margin:80px auto;
+    padding:60px;
+    background:#f8fbff;
+    border-radius:15px;
+}
+
+#administration h2{
+    text-align:center;
+    color:#0b6fb8;
+    font-size:2.2rem;
+    margin-bottom:25px;
+}
+
+#administration p{
+    text-align:center;
+    max-width:900px;
+    margin:auto auto 40px;
+    color:#555;
+    line-height:1.8;
+}
+
+#administration h3{
+    color:#0b6fb8;
+    margin-bottom:20px;
+}
+
+#administration ul{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    list-style:none;
+    padding:0;
+}
+
+#administration li{
+    background:white;
+    padding:20px;
+    border-left:5px solid #0b6fb8;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+#administration li:hover{
+    transform:translateY(-5px);
+}
+
+
+/*=========================================================
+                HOSPITAL MANAGEMENT
+=========================================================*/
+
+#management{
+    max-width:1200px;
+    margin:80px auto;
+    padding:60px;
+}
+
+#management h2{
+    text-align:center;
+    color:#0b6fb8;
+    margin-bottom:25px;
+    font-size:2.2rem;
+}
+
+#management p{
+    text-align:center;
+    max-width:900px;
+    margin:auto auto 40px;
+    color:#555;
+    line-height:1.8;
+}
+
+#management table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+#management th{
+    background:#0b6fb8;
+    color:white;
+    padding:18px;
+    text-align:left;
+    font-size:17px;
+}
+
+#management td{
+    padding:18px;
+    border-bottom:1px solid #eee;
+    color:#555;
+}
+
+#management tr:nth-child(even){
+    background:#f7f9fc;
+}
+
+#management tr:hover{
+    background:#eef7ff;
+}
+
+
+/*=========================================================
+                    CAREERS
+=========================================================*/
+
+#careers{
+    max-width:1200px;
+    margin:80px auto;
+    padding:60px;
+    background:#ffffff;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+#careers h2{
+    text-align:center;
+    font-size:2.2rem;
+    color:#0b6fb8;
+    margin-bottom:25px;
+}
+
+#careers p{
+    text-align:center;
+    max-width:900px;
+    margin:auto auto 40px;
+    color:#555;
+    line-height:1.8;
+}
+
+#careers h3{
+    color:#0b6fb8;
+    margin-bottom:20px;
+}
+
+#careers ul{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    list-style:none;
+    padding:0;
+    margin-bottom:40px;
+}
+
+#careers li{
+    background:#f8fbff;
+    padding:20px;
+    border-radius:10px;
+    border-left:5px solid #0b6fb8;
+    box-shadow:0 5px 15px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+#careers li:hover{
+    transform:translateY(-5px);
+    background:#0b6fb8;
+    color:white;
+}
+
+#careers a{
+    display:inline-block;
+    margin-top:20px;
+    background:#0b6fb8;
+    color:white;
+    padding:15px 35px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+#careers a:hover{
+    background:#084f84;
+}
+
+
+/*=========================================================
+                    RESPONSIVE
+=========================================================*/
+
+@media(max-width:768px){
+
+#history,
+#management,
+#administration,
+#careers{
+    padding:35px 20px;
+}
+
+#mission-vision{
+    grid-template-columns:1fr;
+}
+
+#management table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+}
+/*=========================================================
+                DEPARTMENTS
+=========================================================*/
+
+#departments{
+    padding:100px 8%;
+    background:#f7fbff;
+}
+
+#departments h1{
+    text-align:center;
+    font-size:38px;
+    color:#004080;
+    margin-bottom:20px;
+}
+
+#departments > .container > p{
+    max-width:850px;
+    margin:0 auto 60px;
+    text-align:center;
+    color:#666;
+    line-height:1.8;
+}
+
+#departments .container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.department{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.4s;
+    border-top:5px solid #0a7cff;
+}
+
+.department:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+
+.department h2{
+    color:#0056b3;
+    margin-bottom:15px;
+    font-size:23px;
+}
+
+.department p{
+    color:#666;
+    line-height:1.8;
+}
+
+
+/*=========================================================
+                    DOCTORS
+=========================================================*/
+
+#doctors{
+    padding:100px 8%;
+    background:#fff;
+}
+
+#doctors h1{
+    text-align:center;
+    font-size:38px;
+    color:#004080;
+    margin-bottom:20px;
+}
+
+#doctors>.container>p{
+    text-align:center;
+    max-width:850px;
+    margin:0 auto 60px;
+    line-height:1.8;
+    color:#666;
+}
+
+#doctors .container{
+    display:grid;
+    gap:40px;
+}
+
+.doctor-section{
+    background:#f8fcff;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.doctor-section h2{
+    color:#0066cc;
+    margin-bottom:25px;
+    font-size:28px;
+}
+
+
+/*====================
+Doctor List
+====================*/
+
+.doctor-section ul{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+    list-style:none;
+    margin-top:20px;
+}
+
+.doctor-section ul li{
+    background:#fff;
+    padding:15px 20px;
+    border-left:5px solid #0a7cff;
+    border-radius:8px;
+    font-weight:600;
+    color:#444;
+}
+
+
+/*====================
+Doctor Schedule Table
+====================*/
+
+.doctor-section table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+.doctor-section table th{
+    background:#0056b3;
+    color:#fff;
+    padding:18px;
+    text-align:left;
+}
+
+.doctor-section table td{
+    padding:18px;
+    border-bottom:1px solid #ddd;
+}
+
+.doctor-section table tr:nth-child(even){
+    background:#f5f9fc;
+}
+
+.doctor-section table tr:hover{
+    background:#e9f5ff;
+}
+
+
+/*====================
+Find Doctor Form
+====================*/
+
+.doctor-section form{
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.doctor-section input{
+    flex:1;
+    min-width:260px;
+    padding:16px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.doctor-section input:focus{
+    border-color:#0a7cff;
+    box-shadow:0 0 8px rgba(10,124,255,.25);
+}
+
+.doctor-section button{
+    padding:16px 35px;
+    background:#0a7cff;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.doctor-section button:hover{
+    background:#004ea8;
+}
+
+
+/*=========================================================
+                RESPONSIVE
+=========================================================*/
+
+@media(max-width:768px){
+
+    #departments,
+    #doctors{
+        padding:70px 5%;
+    }
+
+    #departments h1,
+    #doctors h1{
+        font-size:30px;
+    }
+
+    .doctor-section form{
+        flex-direction:column;
+    }
+
+    .doctor-section button{
+        width:100%;
+    }
+
+    .doctor-section table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+}
+/*=========================================================
+                    SERVICES
+=========================================================*/
+
+#services{
+    padding:100px 8%;
+    background:#f8fbff;
+}
+
+#services h1{
+    text-align:center;
+    font-size:38px;
+    color:#004080;
+    margin-bottom:20px;
+}
+
+#services>.container>p{
+    max-width:900px;
+    margin:0 auto 60px;
+    text-align:center;
+    color:#666;
+    line-height:1.8;
+}
+
+#services .container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.service{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    border-top:5px solid #0a7cff;
+    transition:.4s;
+}
+
+.service:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.service h2{
+    color:#0056b3;
+    margin-bottom:15px;
+    font-size:23px;
+}
+
+.service p{
+    color:#666;
+    line-height:1.8;
+}
+
+
+/*=========================================================
+                    APPOINTMENTS
+=========================================================*/
+
+#appointments{
+    padding:100px 8%;
+    background:#ffffff;
+}
+
+#appointments h1{
+    text-align:center;
+    font-size:38px;
+    color:#004080;
+    margin-bottom:20px;
+}
+
+#appointments>.container>p{
+    text-align:center;
+    max-width:850px;
+    margin:0 auto 60px;
+    color:#666;
+    line-height:1.8;
+}
+
+#appointments .container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+    gap:35px;
+}
+
+.appointment-card{
+    background:#f8fbff;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.4s;
+}
+
+.appointment-card:hover{
+    transform:translateY(-8px);
+}
+
+.appointment-card h2{
+    color:#0056b3;
+    margin-bottom:20px;
+}
+
+.appointment-card p{
+    color:#666;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.appointment-card form{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.appointment-card input{
+    flex:1;
+    min-width:230px;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.appointment-card input:focus{
+    outline:none;
+    border-color:#0a7cff;
+}
+
+.appointment-card button{
+    padding:15px 30px;
+    border:none;
+    background:#0a7cff;
+    color:#fff;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.appointment-card button:hover{
+    background:#004ea8;
+}
+
+
+/*=========================================================
+                    PATIENTS
+=========================================================*/
+
+#patients{
+    padding:100px 8%;
+    background:#f4f9ff;
+}
+
+#patients h1{
+    text-align:center;
+    font-size:38px;
+    color:#004080;
+    margin-bottom:20px;
+}
+
+#patients>.container>p{
+    text-align:center;
+    max-width:900px;
+    margin:0 auto 60px;
+    color:#666;
+    line-height:1.8;
+}
+
+#patients .container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+    gap:30px;
+}
+
+.patient-card{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.4s;
+    border-left:5px solid #0a7cff;
+}
+
+.patient-card:hover{
+    transform:translateY(-8px);
+}
+
+.patient-card h2{
+    color:#0056b3;
+    margin-bottom:18px;
+}
+
+.patient-card p{
+    color:#666;
+    line-height:1.8;
+}
+
+.patient-card table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+}
+
+.patient-card table th{
+    background:#0056b3;
+    color:#fff;
+    padding:15px;
+}
+
+.patient-card table td{
+    padding:15px;
+    border:1px solid #ddd;
+}
+
+.patient-card table tr:nth-child(even){
+    background:#f6faff;
+}
+
+.patient-card details{
+    margin-top:15px;
+    background:#f8fbff;
+    border-radius:8px;
+    padding:15px;
+}
+
+.patient-card summary{
+    cursor:pointer;
+    font-weight:600;
+    color:#004080;
+}
+
+.patient-card details p{
+    margin-top:10px;
+}
+
+
+/*=========================================================
+                    NEWS
+=========================================================*/
+
+.news-section{
+    padding:100px 8%;
+    background:#fff;
+}
+
+.news-section h2{
+    text-align:center;
+    font-size:38px;
+    color:#004080;
+    margin-bottom:20px;
+}
+
+.section-description{
+    text-align:center;
+    max-width:850px;
+    margin:0 auto 60px;
+    color:#666;
+    line-height:1.8;
+}
+
+.news-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.news-card{
+    background:#f8fbff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.4s;
+    border-top:5px solid #0a7cff;
+}
+
+.news-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.news-card h3{
+    color:#0056b3;
+    margin-bottom:15px;
+}
+
+.news-card p{
+    color:#666;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.news-card a{
+    display:inline-block;
+    padding:12px 25px;
+    background:#0a7cff;
+    color:#fff;
+    text-decoration:none;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.news-card a:hover{
+    background:#004ea8;
+}
+
+
+/*=========================================================
+                    RESPONSIVE
+=========================================================*/
+
+@media(max-width:768px){
+
+    #services,
+    #appointments,
+    #patients,
+    .news-section{
+        padding:70px 5%;
+    }
+
+    #services h1,
+    #appointments h1,
+    #patients h1,
+    .news-section h2{
+        font-size:30px;
+    }
+
+    .appointment-card form{
+        flex-direction:column;
+    }
+
+    .appointment-card button{
+        width:100%;
+    }
+
+    .patient-card table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+}
+/*======================================
+           GALLERY SECTION
+======================================*/
+
+#gallery{
+    background:#f5f9ff;
+    padding:80px 10%;
+}
+
+#gallery .section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+#gallery .section-title h1{
+    font-size:2.5rem;
+    color:#0b4f8a;
+    margin-bottom:15px;
+}
+
+#gallery .section-title p{
+    max-width:800px;
+    margin:auto;
+    color:#555;
+    font-size:17px;
+    line-height:1.8;
+}
+
+/* Gallery Grid */
+
+.gallery-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+/* Gallery Card */
+
+.gallery-card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.4s;
+}
+
+.gallery-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+}
+
+/* Images */
+
+.gallery-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    display:block;
+    transition:.5s;
+}
+
+.gallery-card:hover img{
+    transform:scale(1.08);
+}
+
+/* Content */
+
+.gallery-content{
+    padding:25px;
+}
+
+.gallery-content h3{
+    color:#0077b6;
+    margin-bottom:15px;
+    font-size:1.35rem;
+}
+
+.gallery-content p{
+    color:#555;
+    font-size:15px;
+    line-height:1.8;
+}
+
+/* Image Overlay Effect */
+
+.gallery-card{
+    position:relative;
+}
+
+.gallery-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,119,182,.15);
+    opacity:0;
+    transition:.4s;
+    z-index:1;
+}
+
+.gallery-card:hover::before{
+    opacity:1;
+}
+
+.gallery-card img,
+.gallery-content{
+    position:relative;
+    z-index:2;
+}
+
+/* Fade Animation */
+
+.gallery-card{
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+    #gallery{
+        padding:70px 6%;
+    }
+
+    .gallery-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:768px){
+
+    #gallery .section-title h1{
+        font-size:2rem;
+    }
+
+    .gallery-container{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-card img{
+        height:220px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    #gallery{
+        padding:60px 20px;
+    }
+
+    #gallery .section-title h1{
+        font-size:1.8rem;
+    }
+
+    .gallery-content{
+        padding:20px;
+    }
+
+    .gallery-content h3{
+        font-size:1.2rem;
+    }
+
+    .gallery-content p{
+        font-size:14px;
+    }
+
+}
+/*======================================
+        CONTACT SECTION
+======================================*/
+
+#contact{
+    padding:80px 10%;
+    background:#f8fbff;
+}
+
+#contact .section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+#contact .section-title h1{
+    font-size:2.5rem;
+    color:#0b4f8a;
+    margin-bottom:15px;
+}
+
+#contact .section-title p{
+    max-width:800px;
+    margin:auto;
+    color:#555;
+    font-size:17px;
+    line-height:1.8;
+}
+
+/* Contact Grid */
+
+.contact-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+/* Contact Cards */
+
+.contact-box{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.4s;
+}
+
+.contact-box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.contact-box h2{
+    color:#0077b6;
+    margin-bottom:20px;
+    font-size:1.5rem;
+}
+
+.contact-box h3{
+    color:#0b4f8a;
+    margin:20px 0 10px;
+}
+
+.contact-box p{
+    color:#555;
+    line-height:1.8;
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+.contact-box strong{
+    color:#222;
+}
+
+/* Google Map */
+
+.contact-box iframe{
+    width:100%;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+/* Contact Form */
+
+.contact-box form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.contact-box input,
+.contact-box textarea{
+    width:100%;
+    padding:15px;
+    border:1px solid #d5d5d5;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+    transition:.3s;
+    font-family:inherit;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus{
+    border-color:#0077b6;
+    box-shadow:0 0 8px rgba(0,119,182,.2);
+}
+
+.contact-box textarea{
+    resize:vertical;
+    min-height:150px;
+}
+
+/* Submit Button */
+
+.contact-box button{
+    padding:15px;
+    border:none;
+    background:#0077b6;
+    color:#fff;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.contact-box button:hover{
+    background:#005b96;
+}
+
+/* Emergency Card */
+
+.emergency{
+    background:#eaf6ff;
+    border-left:6px solid #0077b6;
+}
+
+.emergency h2{
+    color:#d62828;
+}
+
+.emergency h3{
+    color:#0077b6;
+}
+
+.emergency p{
+    color:#444;
+}
+
+/* Animation */
+
+.contact-box{
+    animation:fadeContact .8s ease;
+}
+
+@keyframes fadeContact{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+    #contact{
+        padding:70px 6%;
+    }
+
+    .contact-container{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:768px){
+
+    #contact .section-title h1{
+        font-size:2rem;
+    }
+
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:480px){
+
+    #contact{
+        padding:60px 20px;
+    }
+
+    #contact .section-title h1{
+        font-size:1.8rem;
+    }
+
+    .contact-box{
+        padding:20px;
+    }
+
+    .contact-box h2{
+        font-size:1.3rem;
+    }
+
+    .contact-box p{
+        font-size:14px;
+    }
+
+    .contact-box input,
+    .contact-box textarea{
+        padding:12px;
+    }
+
+    .contact-box button{
+        padding:13px;
+    }
+
+}
+/*======================================
+              FOOTER
+======================================*/
+
+.footer{
+    background:#0b4f8a;
+    color:#fff;
+    padding:70px 10% 25px;
+}
+
+.footer-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+    margin-bottom:40px;
+}
+
+/* Footer Boxes */
+
+.footer-box h2,
+.footer-box h3{
+    margin-bottom:20px;
+    color:#fff;
+}
+
+.footer-box h2 span{
+    color:#8fd3ff;
+}
+
+.footer-box p{
+    color:#d9e7f3;
+    line-height:1.8;
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+/* Footer Lists */
+
+.footer-box ul{
+    list-style:none;
+}
+
+.footer-box ul li{
+    margin-bottom:12px;
+}
+
+.footer-box ul li a{
+    color:#d9e7f3;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footer-box ul li a:hover{
+    color:#8fd3ff;
+    padding-left:8px;
+}
+
+/* Divider */
+
+.footer hr{
+    border:none;
+    height:1px;
+    background:rgba(255,255,255,.25);
+    margin:40px 0 25px;
+}
+
+/* Footer Bottom */
+
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.footer-bottom p{
+    color:#d9e7f3;
+    font-size:15px;
+}
+
+.footer-bottom strong{
+    color:#8fd3ff;
+}
+
+/* Top Contact Bar */
+
+.footer .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+    padding-top:20px;
+}
+
+/* Left Side */
+
+.top-left{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.top-left span{
+    color:#fff;
+    font-size:14px;
+}
+
+.top-left i{
+    color:#8fd3ff;
+    margin-right:6px;
+}
+
+/* Right Side */
+
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.top-right span{
+    color:#fff;
+    font-weight:600;
+}
+
+.top-right a{
+    width:40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    color:#fff;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.top-right a:hover{
+    background:#fff;
+    color:#0b4f8a;
+    transform:translateY(-5px);
+}
+
+/* Footer Animation */
+
+.footer-box{
+    animation:footerFade .8s ease;
+}
+
+@keyframes footerFade{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/*=========================
+      RESPONSIVE
+=========================*/
+
+@media(max-width:992px){
+
+    .footer{
+        padding:60px 6% 25px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .footer-container{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .footer .container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .top-left{
+        justify-content:center;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .footer-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .top-left{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .top-right{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .footer-box h2{
+        font-size:1.7rem;
+    }
+
+    .footer-box h3{
+        font-size:1.3rem;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .footer{
+        padding:50px 20px 20px;
+    }
+
+    .footer-box p,
+    .footer-bottom p{
+        font-size:14px;
+    }
+
+    .top-right a{
+        width:36px;
+        height:36px;
+    }
+
+}
