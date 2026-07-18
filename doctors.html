@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Doctors — Florence Hospital (FHAH)</title>
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="doctors">
+<div id="site-header"></div>
+
+<header class="page-hero">
+    <div class="container">
+        <h1>Find a Doctor</h1>
+        <p class="crumb"><a href="index.html">Home</a> / Doctors</p>
+    </div>
+</header>
+
+<main>
+    <section>
+        <div class="container">
+            <div class="search-row">
+                <input type="text" id="doctorSearch" placeholder="Search by doctor name...">
+            </div>
+            <div class="filter-bar" data-filter-group="doctors">
+                <button class="active" data-filter="all">All</button>
+                <button data-filter="Cardiology">Cardiology</button>
+                <button data-filter="Pediatrics">Pediatrics</button>
+                <button data-filter="Obstetrics">Obstetrics</button>
+                <button data-filter="Surgery">Surgery</button>
+                <button data-filter="Dermatology">Dermatology</button>
+                <button data-filter="Dentistry">Dentistry</button>
+            </div>
+
+            <div class="grid grid-4">
+
+                <div class="doctor-card" data-specialty="Cardiology" data-name="Dr. Amina Nakato">
+                    <img src="images/staff-team.jpg" alt="Dr. Amina Nakato">
+                    <div class="card-body">
+                        <span class="specialty">Cardiology</span>
+                        <h3>Dr. Amina Nakato</h3>
+                        <p style="font-size:14px;">MBChB, MMed Cardiology — 14 yrs experience</p>
+                        <div class="doctor-actions">
+                            <a href="appointments.html" class="btn">Book</a>
+                            <a href="contact.html" class="btn-secondary">Message</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doctor-card" data-specialty="Pediatrics" data-name="Dr. Peter Okello">
+                    <img src="images/staff-team.jpg" alt="Dr. Peter Okello">
+                    <div class="card-body">
+                        <span class="specialty">Pediatrics</span>
+                        <h3>Dr. Peter Okello</h3>
+                        <p style="font-size:14px;">MBChB, DCH — 10 yrs experience</p>
+                        <div class="doctor-actions">
+                            <a href="appointments.html" class="btn">Book</a>
+                            <a href="contact.html" class="btn-secondary">Message</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doctor-card" data-specialty="Obstetrics" data-name="Dr. Grace Namutebi">
+                    <img src="images/staff-team.jpg" alt="Dr. Grace Namutebi">
+                    <div class="card-body">
+                        <span class="specialty">Obstetrics &amp; Gynecology</span>
+                        <h3>Dr. Grace Namutebi</h3>
+                        <p style="font-size:14px;">MBChB, MMed O&G — 12 yrs experience</p>
+                        <div class="doctor-actions">
+                            <a href="appointments.html" class="btn">Book</a>
+                            <a href="contact.html" class="btn-secondary">Message</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doctor-card" data-specialty="Surgery" data-name="Dr. Samuel Kato">
+                    <img src="images/staff-team.jpg" alt="Dr. Samuel Kato">
+                    <div class="card-body">
+                        <span class="specialty">General Surgery</span>
+                        <h3>Dr. Samuel Kato</h3>
+                        <p style="font-size:14px;">MBChB, FCS — 18 yrs experience</p>
+                        <div class="doctor-actions">
+                            <a href="appointments.html" class="btn">Book</a>
+                            <a href="contact.html" class="btn-secondary">Message</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doctor-card" data-specialty="Dermatology" data-name="Dr. Esther Auma">
+                    <img src="images/staff-team.jpg" alt="Dr. Esther Auma">
+                    <div class="card-body">
+                        <span class="specialty">Dermatology</span>
+                        <h3>Dr. Esther Auma</h3>
+                        <p style="font-size:14px;">MBChB, MMed Derm — 8 yrs experience</p>
+                        <div class="doctor-actions">
+                            <a href="appointments.html" class="btn">Book</a>
+                            <a href="contact.html" class="btn-secondary">Message</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doctor-card" data-specialty="Dentistry" data-name="Dr. Brian Tumusiime">
+                    <img src="images/staff-team.jpg" alt="Dr. Brian Tumusiime">
+                    <div class="card-body">
+                        <span class="specialty">Dentistry</span>
+                        <h3>Dr. Brian Tumusiime</h3>
+                        <p style="font-size:14px;">BDS — 9 yrs experience</p>
+                        <div class="doctor-actions">
+                            <a href="appointments.html" class="btn">Book</a>
+                            <a href="contact.html" class="btn-secondary">Message</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/include.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
