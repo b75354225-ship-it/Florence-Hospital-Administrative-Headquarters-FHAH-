@@ -6,7 +6,7 @@
 
 // Change this to your deployed backend URL once you host the
 // Node/Express API in /backend (see backend/README.md).
-const API_BASE = window.API_BASE || 'http://localhost:4000/api';
+const API_BASE = window.API_BASE || 'https://fhah-backend.onrender.com/api';
 
 document.addEventListener('chromeReady', () => {
     initChatWidget();
