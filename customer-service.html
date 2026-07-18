@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Service — Florence Hospital (FHAH)</title>
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="customer-service">
+<div id="site-header"></div>
+
+<header class="page-hero">
+    <div class="container">
+        <h1>Customer Service</h1>
+        <p class="crumb"><a href="index.html">Home</a> / Customer Service</p>
+    </div>
+</header>
+
+<main>
+    <section>
+        <div class="container support-grid">
+
+            <div>
+                <span class="eyebrow">Reach Us</span>
+                <h2>How Can We Help?</h2>
+                <p>Choose the channel that works best for you. For medical emergencies, always call our emergency hotline directly.</p>
+
+                <div class="support-channels">
+                    <div class="channel-card">
+                        <div class="icon"><i class="fa-solid fa-comment-dots"></i></div>
+                        <div><strong>Live Chat</strong><span>Use the chat bubble in the corner — available now</span></div>
+                    </div>
+                    <div class="channel-card">
+                        <div class="icon"><i class="fa-solid fa-phone"></i></div>
+                        <div><strong>Phone</strong><span>+256 700 123 456 · Mon–Sun, 24 hours</span></div>
+                    </div>
+                    <div class="channel-card">
+                        <div class="icon"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div><strong>WhatsApp</strong><span><a href="https://wa.me/256700123456" target="_blank" rel="noopener">Chat on WhatsApp</a></span></div>
+                    </div>
+                    <div class="channel-card">
+                        <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div><strong>Email</strong><span>support@florencehospital.org</span></div>
+                    </div>
+                    <div class="channel-card" style="border-left:4px solid var(--emergency);">
+                        <div class="icon" style="color:var(--emergency);"><i class="fa-solid fa-truck-medical"></i></div>
+                        <div><strong>Emergency Hotline</strong><span>+256 709 543 181 · 24/7</span></div>
+                    </div>
+                </div>
+
+                <h3>Common Questions</h3>
+                <div class="faq-item open">
+                    <div class="faq-question"><span>How do I reschedule an appointment?</span><span class="plus">+</span></div>
+                    <div class="faq-answer"><p>Submit a support ticket or call us with your appointment reference and preferred new time.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>My payment didn't go through — what now?</span><span class="plus">+</span></div>
+                    <div class="faq-answer"><p>Submit a ticket with your invoice number and payment method used. We'll confirm the status within one business day.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><span>How long does a support ticket take?</span><span class="plus">+</span></div>
+                    <div class="faq-answer"><p>Most tickets are answered within a few hours; urgent medical concerns should go through the emergency hotline.</p></div>
+                </div>
+            </div>
+
+            <div class="form-box">
+                <h3>Submit a Support Ticket</h3>
+                <form id="ticketForm">
+                    <div class="form-group">
+                        <label for="ticketName">Full Name</label>
+                        <input type="text" id="ticketName" name="name" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ticketEmail">Email Address</label>
+                            <input type="email" id="ticketEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ticketPhone">Phone Number</label>
+                            <input type="tel" id="ticketPhone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ticketCategory">Category</label>
+                        <select id="ticketCategory" name="category" required>
+                            <option value="">Select a category</option>
+                            <option>Appointment</option>
+                            <option>Billing &amp; Payments</option>
+                            <option>Medical Records</option>
+                            <option>Donation</option>
+                            <option>General Inquiry</option>
+                            <option>Complaint</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ticketMessage">Message</label>
+                        <textarea id="ticketMessage" name="message" required placeholder="Tell us how we can help..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-block">Submit Ticket</button>
+                    <div class="form-status" id="ticketStatus"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/include.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

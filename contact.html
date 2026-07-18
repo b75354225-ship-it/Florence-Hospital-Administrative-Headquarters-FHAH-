@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Florence Hospital (FHAH)</title>
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contact">
+<div id="site-header"></div>
+
+<header class="page-hero">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p class="crumb"><a href="index.html">Home</a> / Contact</p>
+    </div>
+</header>
+
+<main>
+    <section>
+        <div class="container">
+            <div class="grid grid-2">
+
+                <div class="card"><div class="card-body">
+                    <h2>📞 Contact Information</h2>
+                    <p><strong>Hospital:</strong> Florence Hospital Administrative Headquarters</p>
+                    <p><strong>Address:</strong> Plot 369, Kampala, Uganda</p>
+                    <p><strong>Telephone:</strong> +256 700 123 456</p>
+                    <p><strong>Email:</strong> info@florencehospital.org</p>
+                    <p><strong>Working Hours:</strong> Monday – Sunday (24 Hours)</p>
+                </div></div>
+
+                <div class="card"><div class="card-body">
+                    <h2>📍 Location</h2>
+                    <p>Florence Hospital is conveniently located within Kampala, easily accessible to patients and visitors.</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63700!2d32.5825!3d0.3476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1" width="100%" height="260" style="border:0;border-radius:10px;" loading="lazy"></iframe>
+                </div></div>
+
+                <div class="card" style="grid-column:1/-1;"><div class="card-body">
+                    <h2>📝 Feedback Form</h2>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group"><label for="cName">Full Name</label><input type="text" id="cName" name="name" required></div>
+                            <div class="form-group"><label for="cEmail">Email Address</label><input type="email" id="cEmail" name="email" required></div>
+                        </div>
+                        <div class="form-group"><label for="cSubject">Subject</label><input type="text" id="cSubject" name="subject" required></div>
+                        <div class="form-group"><label for="cMessage">Message</label><textarea id="cMessage" name="message" rows="6" required></textarea></div>
+                        <button type="submit" class="btn">Send Message</button>
+                        <div class="form-status" id="contactStatus"></div>
+                    </form>
+                </div></div>
+
+                <div class="card" style="grid-column:1/-1;border-left:6px solid var(--emergency);"><div class="card-body">
+                    <h2 style="color:var(--emergency);">🚑 Emergency Contacts</h2>
+                    <p>Emergency services are available 24 hours a day, 7 days a week.</p>
+                    <h3>Emergency Hotline</h3><p><strong>Phone:</strong> +256 709 543 181</p>
+                    <h3>Ambulance Service</h3><p><strong>Phone:</strong> +256 726 128 046</p>
+                    <p>For urgent medical emergencies, please call immediately or visit our Emergency Department.</p>
+                </div></div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/include.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

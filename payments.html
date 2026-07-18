@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pay a Bill — Florence Hospital (FHAH)</title>
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="payments">
+<div id="site-header"></div>
+
+<header class="page-hero">
+    <div class="container">
+        <h1>Pay a Hospital Bill</h1>
+        <p class="crumb"><a href="index.html">Home</a> / Payments</p>
+    </div>
+</header>
+
+<main>
+    <section>
+        <div class="container grid grid-2" style="align-items:flex-start;">
+
+            <div>
+                <span class="eyebrow">Secure Payments</span>
+                <h2>Settle Your Bill Online</h2>
+                <p>Enter your invoice details below and choose how you'd like to pay. You'll be redirected to a secure checkout to complete the transaction.</p>
+
+                <div class="invoice-summary">
+                    <div class="line"><span>Service</span><span>As entered below</span></div>
+                    <div class="line"><span>Processing fee</span><span>Charged by payment provider</span></div>
+                    <div class="line"><span>Total due</span><span id="totalPreview">UGX 0</span></div>
+                </div>
+
+                <div class="channel-card">
+                    <div class="icon"><i class="fa-solid fa-headset"></i></div>
+                    <div><strong>Need help with a bill?</strong><span>Chat with Customer Service or call +256 700 123 456</span></div>
+                </div>
+            </div>
+
+            <div class="form-box">
+                <form id="paymentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="payerName">Full Name</label>
+                            <input type="text" id="payerName" name="payerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoiceNumber">Invoice / Patient Number</label>
+                            <input type="text" id="invoiceNumber" name="invoiceNumber" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="payerEmail">Email Address</label>
+                            <input type="email" id="payerEmail" name="payerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payerPhone">Phone Number</label>
+                            <input type="tel" id="payerPhone" name="payerPhone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Amount (UGX)</label>
+                        <div class="amount-chips">
+                            <button type="button" data-amount="50000">50,000</button>
+                            <button type="button" data-amount="100000">100,000</button>
+                            <button type="button" data-amount="250000">250,000</button>
+                            <button type="button" data-amount="500000">500,000</button>
+                        </div>
+                        <input type="number" id="amountInput" name="amount" min="1000" placeholder="Or enter a custom amount" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <div class="pay-methods">
+                            <label class="pay-method selected">
+                                <input type="radio" name="method" value="mobile_money" checked>
+                                <span class="icon">📱</span>Mobile Money
+                            </label>
+                            <label class="pay-method">
+                                <input type="radio" name="method" value="card">
+                                <span class="icon">💳</span>Debit / Credit Card
+                            </label>
+                            <label class="pay-method">
+                                <input type="radio" name="method" value="bank_transfer">
+                                <span class="icon">🏦</span>Bank Transfer
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-block">Proceed to Secure Payment</button>
+                    <div class="secure-note"><i class="fa-solid fa-lock"></i> Payments are processed by a licensed third-party payment provider. FHAH does not store your card details.</div>
+                    <div class="form-status" id="paymentStatus"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/include.js"></script>
+<script src="js/main.js"></script>
+<script>
+    document.getElementById('amountInput').addEventListener('input', (e) => {
+        const val = Number(e.target.value || 0).toLocaleString();
+        document.getElementById('totalPreview').textContent = 'UGX ' + val;
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "Florence Hospital Administrative Headquarters",
+  "short_name": "FHAH",
+  "description": "Book appointments, pay bills, donate, and reach Florence Hospital support.",
+  "start_url": "index.html",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#f5f8fc",
+  "theme_color": "#0B6EBD",
+  "icons": [
+    { "src": "images/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

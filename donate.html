@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate — Florence Hospital (FHAH)</title>
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="donate">
+<div id="site-header"></div>
+
+<header class="page-hero donate-hero">
+    <div class="container">
+        <h1>Support Florence Hospital</h1>
+        <p class="crumb"><a href="index.html">Home</a> / Donate</p>
+    </div>
+</header>
+
+<main>
+    <section>
+        <div class="container grid grid-2" style="align-items:flex-start;">
+            <div>
+                <span class="eyebrow">Why It Matters</span>
+                <h2>Your Gift Funds Real Care</h2>
+                <p>
+                    Donations to FHAH directly support subsidized treatment for
+                    patients who can't afford full costs, equipment upgrades, and
+                    community outreach programs like free vaccination drives.
+                </p>
+
+                <div class="impact-grid mt-40">
+                    <div class="impact-card"><strong>500+</strong><p>Patients supported through subsidized care last year</p></div>
+                    <div class="impact-card"><strong>12</strong><p>Community outreach events funded</p></div>
+                    <div class="impact-card"><strong>100%</strong><p>Of donations go toward patient care &amp; equipment</p></div>
+                </div>
+
+                <h3 class="mt-40">Give Directly</h3>
+                <p>You can send a donation directly via mobile money or bank transfer using the account below.</p>
+                <div class="donate-account">
+                    <div>
+                        <div style="font-size:13px;color:var(--gray);margin-bottom:4px;">Donation Account Number</div>
+                        <div class="acct-number" id="acctNumber">3204527565</div>
+                    </div>
+                    <button class="copy-btn" id="copyAccount">Copy Number</button>
+                </div>
+                <p class="form-note mt-40">Prefer to give by card or mobile money checkout instead? Use the form.</p>
+            </div>
+
+            <div class="form-box">
+                <h3>Make a Donation</h3>
+                <form id="donateForm">
+                    <div class="form-group">
+                        <label>Amount (UGX)</label>
+                        <div class="amount-chips donate-amount-chips">
+                            <button type="button" data-amount="20000">20,000</button>
+                            <button type="button" data-amount="50000">50,000</button>
+                            <button type="button" data-amount="100000">100,000</button>
+                            <button type="button" data-amount="250000">250,000</button>
+                        </div>
+                        <input type="number" id="donateAmountInput" name="amount" min="1000" placeholder="Or enter a custom amount" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="donorName">Full Name</label>
+                            <input type="text" id="donorName" name="donorName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="donorEmail">Email Address</label>
+                            <input type="email" id="donorEmail" name="donorEmail" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="donorPhone">Phone Number</label>
+                        <input type="tel" id="donorPhone" name="donorPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" name="anonymous" style="width:auto;display:inline-block;margin-right:8px;"> Give anonymously</label>
+                    </div>
+                    <button type="submit" class="btn btn-donate btn-block">Donate Now</button>
+                    <div class="form-status" id="donateStatus"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="js/include.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
