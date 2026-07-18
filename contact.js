@@ -1,15 +1,14 @@
-// Lightweight file-based database — zero setup required.
-// For production on a real host, point this at MySQL/Postgres instead
-// (swap better-sqlite3 for mysql2 or pg, keep the same table shapes).
+const express = require('express');
+const router = express.Router();
+const db = require('../db');
 
-const path = require('path');
-const fs = require('fs');
-const Database = require('better-sqlite3');
+// POST /api/chat-messages — best-effort transcript logging from the
+// front-end chat widget so support staff can review conversations.
+router.post('/', (req, res) => {
+    const { message } = req.body;
+    if (!message) return res.status(400).json({ error: 'Missing message' });
+    db.prepare('INSERT INTO chat_messages (message) VALUES (?)').run(message);
+    res.status(201).json({ ok: true });
+});
 
-const dbPath = path.join(__dirname, 'fhah.db');
-const db = new Database(dbPath);
-
-const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
-db.exec(schema);
-
-module.exports = db;
+module.exports = router;
