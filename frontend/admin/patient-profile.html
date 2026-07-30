@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Patient Profile | FHAH Hospital Management System
+</title>
+
+
+<meta name="description" content="FHAH Hospital Management System patient profile management page for viewing and managing patient information.">
+
+
+<meta name="author" content="Florence Hospital Administrative Headquarters">
+
+
+
+<!-- FHAH Logo -->
+
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+
+
+
+<!-- Google Fonts -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+<!-- Font Awesome Icons -->
+
+<link 
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+<!-- Admin Dashboard CSS -->
+
+<link rel="stylesheet" href="dashboard.css">
+
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>FHAH Admin</h2>
+
+        <ul>
+
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="#">Patients</a></li>
+            <li><a href="#">Medical Records</a></li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <h1>Patient Profile</h1>
+
+        <!-- Patient Information -->
+
+        <section class="card">
+
+            <h2>Patient Information</h2>
+
+            <table class="profile-table">
+
+                <tr>
+                    <th>Full Name</th>
+                    <td id="patientName">Loading...</td>
+                </tr>
+
+                <tr>
+                    <th>Medical Number</th>
+                    <td id="patientNumber"></td>
+                </tr>
+
+                <tr>
+                    <th>Gender</th>
+                    <td id="patientGender"></td>
+                </tr>
+
+                <tr>
+                    <th>Date of Birth</th>
+                    <td id="patientDOB"></td>
+                </tr>
+
+                <tr>
+                    <th>Phone</th>
+                    <td id="patientPhone"></td>
+                </tr>
+
+                <tr>
+                    <th>Email</th>
+                    <td id="patientEmail"></td>
+                </tr>
+
+                <tr>
+                    <th>Address</th>
+                    <td id="patientAddress"></td>
+                </tr>
+
+            </table>
+
+            <button onclick="toggleEditPatient()">Edit Patient</button>
+
+            <!-- EDIT FORM (hidden by default) -->
+
+            <div id="editPatientForm" class="hidden">
+
+                <input type="text" id="editPatientName" placeholder="Full Name">
+                <input type="text" id="editPatientGender" placeholder="Gender">
+                <input type="date" id="editPatientDOB">
+                <input type="text" id="editPatientPhone" placeholder="Phone">
+                <input type="email" id="editPatientEmail" placeholder="Email">
+                <input type="text" id="editPatientAddress" placeholder="Address">
+                <input type="text" id="editPatientNumber" placeholder="Medical Number">
+
+                <button onclick="savePatientEdit()">Save Changes</button>
+                <button onclick="toggleEditPatient()">Cancel</button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Medical History -->
+
+        <section class="card">
+
+            <h2>Medical History</h2>
+
+            <div class="medical-record-form">
+
+                <select id="historyRecordDoctor">
+                    <option value="">Select Doctor</option>
+                </select>
+
+                <textarea id="historyDiagnosis" placeholder="Diagnosis"></textarea>
+                <textarea id="historyTreatment" placeholder="Treatment"></textarea>
+                <textarea id="historyPrescription" placeholder="Prescription"></textarea>
+                <textarea id="historyNotes" placeholder="Notes"></textarea>
+
+                <button onclick="addHistoryRecord()">Add Record</button>
+
+            </div>
+
+           <div class="panel">
+
+              <h2>Appointment History</h2>
+
+              <table>
+
+                  <thead>
+                      <tr>
+                          <th>Department</th>
+                          <th>Doctor</th>
+                          <th>Date</th>
+                          <th>Status</th>
+                     </tr>
+                  </thead>
+
+                 <tbody id="profileAppointmentsTable"></tbody>
+
+              </table>
+
+          </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+                        <th>Doctor</th>
+                        <th>Diagnosis</th>
+                        <th>Treatment</th>
+                        <th>Prescription</th>
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="historyTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- EDIT RECORD MODAL -->
+
+<div id="editHistoryModal" class="hidden">
+    <div class="modal-content">
+
+        <h2>Edit Medical Record</h2>
+
+        <input type="hidden" id="editHistoryId">
+
+        <textarea id="editHistoryDiagnosis" placeholder="Diagnosis"></textarea>
+        <textarea id="editHistoryTreatment" placeholder="Treatment"></textarea>
+        <textarea id="editHistoryPrescription" placeholder="Prescription"></textarea>
+        <textarea id="editHistoryNotes" placeholder="Notes"></textarea>
+
+        <button onclick="saveHistoryEdit()">Save</button>
+        <button onclick="document.getElementById('editHistoryModal').classList.add('hidden')">Cancel</button>
+
+    </div>
+</div>
+
+<script src="patient-profile.js"></script>
+
+<footer class="admin-footer">
+
+<p>
+© 2026 Florence Hospital Administrative Headquarters (FHAH)
+<br>
+Hospital Management System | Administrator Portal
+</p>
+
+</footer>
+
+
+<script src="dashboard.js"></script>
+<div id="footer-placeholder"></div>
+<div id="footer-placeholder"></div>
+
+</body>
+
+</html>

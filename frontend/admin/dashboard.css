@@ -1,0 +1,813 @@
+/* ================================
+   RESET & BASE
+================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: #0d0d10;
+  color: #e5e5e8;
+  display: flex;
+  min-height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+
+.sidebar {
+  width: 240px;
+  background: #111114;
+  border-right: 1px solid #232326;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  flex-shrink: 0;
+}
+
+.sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px 24px;
+  border-bottom: 1px solid #232326;
+}
+
+.sidebar .brand i {
+  font-size: 24px;
+  color: #a855f7;
+}
+
+.sidebar .brand h2 {
+  font-size: 18px;
+  color: #fff;
+}
+
+.sidebar .brand p {
+  font-size: 12px;
+  color: #8b8b93;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  flex: 1;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  color: #a1a1aa;
+  font-size: 14px;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.sidebar nav a i {
+  width: 18px;
+  text-align: center;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #1a1a1f;
+  color: #fff;
+  border-left: 3px solid #a855f7;
+}
+
+.sidebar .logout {
+  padding: 12px 20px;
+  border-top: 1px solid #232326;
+}
+
+.sidebar .logout a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #a1a1aa;
+  font-size: 14px;
+}
+
+.sidebar .logout a:hover {
+  color: #f87171;
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.main-content {
+  flex: 1;
+  padding: 24px 32px;
+  overflow-y: auto;
+}
+
+/* ================================
+   TOPBAR
+================================ */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.topbar h1 {
+  font-size: 22px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.topbar p {
+  font-size: 13px;
+  color: #8b8b93;
+}
+
+.topbar .profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar .profile i {
+  font-size: 32px;
+  color: #a855f7;
+}
+
+.topbar .profile strong {
+  display: block;
+  font-size: 14px;
+  color: #fff;
+}
+
+.topbar .profile span {
+  font-size: 12px;
+  color: #8b8b93;
+}
+
+/* ================================
+   NOTIFICATIONS
+================================ */
+
+.notifications {
+  position: relative;
+}
+
+#notificationBell {
+  color: #a1a1aa;
+  transition: color 0.15s;
+}
+
+#notificationBell:hover {
+  color: #a855f7;
+}
+
+#notificationDropdown {
+  background: #16161a !important;
+  border: 1px solid #232326 !important;
+  border-radius: 10px;
+  color: #e5e5e8;
+}
+
+#notificationDropdown > div:first-child {
+  border-bottom: 1px solid #232326 !important;
+  color: #fff;
+}
+
+#notificationList > div {
+  border-bottom: 1px solid #232326 !important;
+}
+
+#notificationList > div:hover {
+  background: #1a1a1f;
+}
+
+/* ================================
+   STATS CARDS
+================================ */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #16161a;
+  border: 1px solid #232326;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: border-color 0.15s;
+}
+
+.stat-card:hover {
+  border-color: #a855f7;
+}
+
+.stat-card .icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.stat-card .icon.blue   { background: linear-gradient(135deg, #6366f1, #a855f7); }
+.stat-card .icon.green  { background: linear-gradient(135deg, #10b981, #34d399); }
+.stat-card .icon.orange { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.stat-card .icon.red    { background: linear-gradient(135deg, #ef4444, #f87171); }
+.stat-card .icon.purple { background: linear-gradient(135deg, #a855f7, #ec4899); }
+
+.stat-card h3 {
+  font-size: 13px;
+  color: #8b8b93;
+  font-weight: 500;
+}
+
+.stat-card p {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 2px 0;
+}
+
+.stat-card span {
+  font-size: 12px;
+  color: #6b6b73;
+}
+
+/* ================================
+   DASHBOARD GRID / PANELS
+================================ */
+
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel {
+  background: #16161a;
+  border: 1px solid #232326;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.panel h2 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.panel.activity ul {
+  list-style: none;
+}
+
+.panel.activity li {
+  padding: 8px 0;
+  font-size: 13px;
+  color: #a1a1aa;
+  border-bottom: 1px solid #232326;
+}
+
+.panel.activity li:last-child {
+  border-bottom: none;
+}
+
+/* ================================
+   FORMS
+================================ */
+
+.doctor-form,
+.patient-form,
+.appointment-form,
+.medical-record-form {
+  background: #16161a;
+  border: 1px solid #232326;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.doctor-form input,
+.patient-form input,
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea,
+.medical-record-form select,
+.medical-record-form textarea {
+  flex: 1;
+  min-width: 140px;
+  padding: 8px 10px;
+  background: #0d0d10;
+  border: 1px solid #2b2b30;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #e5e5e8;
+}
+
+.doctor-form input:focus,
+.patient-form input:focus,
+.appointment-form input:focus,
+.appointment-form select:focus,
+.appointment-form textarea:focus,
+.medical-record-form select:focus,
+.medical-record-form textarea:focus {
+  outline: none;
+  border-color: #a855f7;
+}
+
+.doctor-form button,
+.patient-form button,
+.appointment-form button,
+.medical-record-form button {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.doctor-form button:hover,
+.patient-form button:hover,
+.appointment-form button:hover,
+.medical-record-form button:hover {
+  opacity: 0.9;
+}
+
+/* ================================
+   FILTERS
+================================ */
+
+.appointment-filters,
+.record-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.appointment-filters input,
+.appointment-filters select,
+.record-filters input,
+.record-filters select {
+  padding: 7px 10px;
+  background: #0d0d10;
+  border: 1px solid #2b2b30;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #e5e5e8;
+}
+
+.appointment-filters button,
+.record-filters button {
+  padding: 7px 14px;
+  border: 1px solid #2b2b30;
+  background: #1a1a1f;
+  color: #e5e5e8;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.appointment-filters button:hover,
+.record-filters button:hover {
+  border-color: #a855f7;
+}
+
+/* ================================
+   TABLES
+================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead {
+  background: #1a1a1f;
+}
+
+th {
+  text-align: left;
+  padding: 10px 12px;
+  color: #8b8b93;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #232326;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #1e1e22;
+  color: #d4d4d8;
+}
+
+tbody tr:hover {
+  background: #1a1a1f;
+}
+
+td button {
+  padding: 5px 10px;
+  margin-right: 4px;
+  border: 1px solid #2b2b30;
+  background: #1a1a1f;
+  color: #e5e5e8;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+td button:hover {
+  border-color: #a855f7;
+}
+
+/* Status badges */
+
+.status {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status.pending   { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.status.approved  { background: rgba(16,185,129,0.15); color: #34d399; }
+.status.rejected  { background: rgba(239,68,68,0.15);  color: #f87171; }
+.status.completed { background: rgba(99,102,241,0.15); color: #a5b4fc; }
+.status.cancelled { background: rgba(148,148,157,0.15); color: #a1a1aa; }
+
+/* ================================
+   PAGINATION
+================================ */
+
+#appointmentsPagination,
+#recordsPagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #a1a1aa;
+}
+
+#appointmentsPagination button,
+#recordsPagination button {
+  padding: 6px 12px;
+  border: 1px solid #2b2b30;
+  background: #1a1a1f;
+  color: #e5e5e8;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#appointmentsPagination button:disabled,
+#recordsPagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ================================
+   MODALS
+================================ */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal .modal-content,
+#editAppointmentModal .modal-content,
+#editRecordModal .modal-content {
+  background: #16161a;
+  border: 1px solid #232326;
+  padding: 24px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content h2 {
+  margin-bottom: 8px;
+  font-size: 17px;
+  color: #fff;
+}
+
+.modal-content label {
+  font-size: 12px;
+  color: #8b8b93;
+  margin-top: 4px;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  padding: 8px 10px;
+  background: #0d0d10;
+  border: 1px solid #2b2b30;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #e5e5e8;
+  width: 100%;
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+  outline: none;
+  border-color: #a855f7;
+}
+
+.modal-content button {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.modal-content button:first-of-type {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #fff;
+}
+
+.modal-content button:first-of-type:hover {
+  opacity: 0.9;
+}
+
+.modal-content button:last-of-type {
+  background: #1a1a1f;
+  border: 1px solid #2b2b30;
+  color: #e5e5e8;
+}
+
+.modal-content button:last-of-type:hover {
+  border-color: #a855f7;
+}
+
+#editAppointmentModal:not(.hidden),
+#editRecordModal:not(.hidden) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ================================
+   PATIENT / DOCTOR PROFILE PAGES
+================================ */
+
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.dashboard .sidebar h2 {
+  padding: 0 20px 20px;
+  font-size: 18px;
+  color: #fff;
+  border-bottom: 1px solid #232326;
+}
+
+.dashboard .sidebar ul {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.dashboard .sidebar ul li a {
+  display: block;
+  padding: 12px 20px;
+  color: #a1a1aa;
+  font-size: 14px;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, color 0.15s;
+}
+
+.dashboard .sidebar ul li a:hover {
+  background: #1a1a1f;
+  color: #fff;
+  border-left: 3px solid #a855f7;
+}
+
+.dashboard .main-content {
+  flex: 1;
+  padding: 24px 32px;
+}
+
+.dashboard .main-content > h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.card {
+  background: #16161a;
+  border: 1px solid #232326;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.profile-table tr {
+  border-bottom: 1px solid #1e1e22;
+}
+
+.profile-table tr:last-child {
+  border-bottom: none;
+}
+
+.profile-table th {
+  text-align: left;
+  padding: 10px 12px;
+  width: 160px;
+  color: #8b8b93;
+  font-size: 13px;
+  font-weight: 600;
+  vertical-align: top;
+}
+
+.profile-table td {
+  padding: 10px 12px;
+  color: #e5e5e8;
+  font-size: 14px;
+}
+
+.card > button {
+  padding: 9px 16px;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.card > button:hover {
+  opacity: 0.9;
+}
+
+#editPatientForm,
+#editDoctorForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #232326;
+  max-width: 420px;
+}
+
+#editPatientForm input,
+#editDoctorForm input {
+  padding: 8px 10px;
+  background: #0d0d10;
+  border: 1px solid #2b2b30;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #e5e5e8;
+}
+
+#editPatientForm button,
+#editDoctorForm button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#editPatientForm button:first-of-type,
+#editDoctorForm button:first-of-type {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  color: #fff;
+}
+
+#editPatientForm button:first-of-type:hover,
+#editDoctorForm button:first-of-type:hover {
+  opacity: 0.9;
+}
+
+#editPatientForm button:last-of-type,
+#editDoctorForm button:last-of-type {
+  background: #1a1a1f;
+  border: 1px solid #2b2b30;
+  color: #e5e5e8;
+}
+
+.card .panel {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.card .panel h2 {
+  font-size: 14px;
+  color: #8b8b93;
+  margin-bottom: 10px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .sidebar nav {
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  .sidebar .logout {
+    border-top: none;
+  }
+}

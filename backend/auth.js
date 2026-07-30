@@ -17,7 +17,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const db = require("./db");
+const db = require("./config/db");
 
 
 // ADMIN LOGIN ROUTE

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+FHAH Admin Dashboard | Hospital Management System
+</title>
+
+
+<meta name="description" content="Florence Hospital Administrative Headquarters (FHAH) Admin Dashboard for managing patients, appointments, doctors, reports, billing, and hospital operations.">
+
+
+<meta name="author" content="Florence Hospital Administrative Headquarters">
+
+
+
+<!-- Dashboard Icon -->
+
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+
+
+
+<!-- Google Fonts -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+<!-- Font Awesome Icons -->
+
+<link 
+rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+<!-- Dashboard CSS -->
+
+<link rel="stylesheet" href="dashboard.css">
+
+
+</head>
+
+
+  <body>
+
+
+      <!-- SIDEBAR -->
+
+      <aside class="sidebar">
+
+         <div class="brand">
+
+              <i class="fa-solid fa-hospital"></i>
+
+              <div>
+                  <h2>FHAH</h2>
+                  <p>Administration</p>
+              </div>
+
+          </div>
+
+
+          <nav>
+
+              <a class="active" href="#" onclick="scrollToSection('top'); return false;">
+                  <i class="fa-solid fa-chart-line"></i>
+                  Dashboard
+              </a>
+
+              <a href="#" onclick="scrollToSection('appointments-section'); return false;">
+                  <i class="fa-solid fa-calendar-check"></i>
+                  Appointments
+              </a>
+
+              <a href="#" onclick="scrollToSection('messages-section'); return false;">
+                  <i class="fa-solid fa-envelope"></i>
+                  Messages
+              </a>
+
+              <a href="#" onclick="scrollToSection('donations-section'); return false;">
+                  <i class="fa-solid fa-hand-holding-dollar"></i>
+                  Donations
+              </a>
+
+              <a href="#" onclick="scrollToSection('doctors-section'); return false;">
+                  <i class="fa-solid fa-user-doctor"></i>
+                  Doctors
+              </a>
+
+              <a href="#" onclick="alert('Reports coming soon'); return false;">
+                  <i class="fa-solid fa-file-medical"></i>
+                  Reports
+              </a>
+
+              <a href="#" onclick="alert('Settings coming soon'); return false;">
+                  <i class="fa-solid fa-gear"></i>
+                  Settings
+              </a>
+
+          </nav>
+
+
+          <div class="logout">
+              <a href="#" id="logoutLink">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  Logout
+              </a>
+          </div>
+
+
+       </aside>
+
+
+      <!-- MAIN CONTENT -->
+
+      <main class="main-content">
+
+          <header class="topbar">
+
+              <div>
+                  <h1> Dashboard Overview </h1>
+                  <p> Welcome back, Administrator </p>
+              </div>
+
+              <div class="notifications" style="position:relative;">
+
+                  <i class="fa-solid fa-bell" id="notificationBell" style="cursor:pointer; font-size:20px;"></i>
+                  <span id="notificationBadge" style="display:none; position:absolute; top:-6px; right:-8px; background:red; color:white; border-radius:50%; padding:2px 6px; font-size:11px;">0</span>
+
+                  <div id="notificationDropdown" class="hidden" style="position:absolute; right:0; top:30px; width:320px; background:white; border:1px solid #ccc; box-shadow:0 2px 8px rgba(0,0,0,0.15); z-index:100; max-height:400px; overflow-y:auto;">
+
+                      <div style="padding:10px; font-weight:bold; border-bottom:1px solid #eee;">Notifications</div>
+                      <div id="notificationList" style="padding:8px;"></div>
+
+                  </div>
+
+              </div>
+
+              <div class="profile">
+                  <i class="fa-solid fa-user-circle"></i>
+                  <div>
+                      <strong> Admin </strong>
+                      <span> Hospital Manager </span>
+                  </div>
+              </div>
+
+          </header>
+
+
+         <!-- STATISTICS -->
+
+         <section class="stats">
+
+              <div class="stat-card">
+                  <div class="icon blue">
+                      <i class="fa-solid fa-calendar-check"></i>
+                  </div>
+                  <div>
+                      <h3> Appointments </h3>
+                      <p id="appointmentsCount">0</p>
+                      <span> +12% this month </span>
+                  </div>
+              </div>
+
+              <div class="stat-card">
+                  <div class="icon green">
+                      <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                      <h3> Messages </h3>
+                      <p id="messagesCount">0</p>
+                      <span> 8 unread </span>
+                  </div>
+              </div>
+
+              <div class="stat-card">
+                  <div class="icon orange">
+                      <i class="fa-solid fa-hand-holding-dollar"></i>
+                  </div>
+                  <div>
+                      <h3> Donations </h3>
+                      <p id="donationsCount">0</p>
+                      <span> This year </span>
+                  </div>
+              </div>
+
+              <div class="stat-card">
+                  <div class="icon red">
+                      <i class="fa-solid fa-bed"></i>
+                  </div>
+                  <div>
+                      <h3> Patients </h3>
+                      <p id="patientsCount">0</p>
+                      <span> Registered </span>
+                  </div>
+              </div>
+
+              <div class="stat-card">
+                  <div class="icon purple">
+                      <i class="fa-solid fa-user-doctor"></i>
+                  </div>
+                  <div>
+                      <h3>Doctors</h3>
+                      <p id="doctorsCount">0</p>
+                      <span>Medical Staff</span>
+                  </div>
+              </div>
+
+              <div class="stat-card">
+                  <div class="icon blue">
+                      <i class="fa-solid fa-file-medical"></i>
+                  </div>
+                  <div>
+                     <h3>Medical Records</h3>
+                     <p id="recordsCount">0</p>
+                     <span>Patient Records</span>
+                  </div>
+              </div>
+
+          </section>
+
+
+         <!-- CONTENT AREA -->
+
+          <section class="dashboard-grid">
+
+              <div class="doctor-form">
+                  <input type="text" id="doctorName" placeholder="Doctor Name">
+                  <input type="text" id="doctorSpecialization" placeholder="Specialization">
+                  <input type="text" id="doctorDepartment" placeholder="Department">
+                  <input type="text" id="doctorPhone" placeholder="Phone">
+                  <input type="email" id="doctorEmail" placeholder="Email">
+                  <input type="text" id="doctorImage" placeholder="Image filename">
+                  <button onclick="addDoctor()">Add Doctor</button>
+              </div>
+
+              <div class="panel" id="doctors-section">
+
+                 <h2>Doctors Management</h2>
+
+                 <table>
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Specialization</th>
+                              <th>Department</th>
+                              <th>Phone</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody id="doctorsTable"></tbody>
+                 </table>
+
+              </div>
+
+             <div class="panel">
+
+                  <h2>Medical Records Management</h2>
+
+                  <div class="medical-record-form">
+
+                      <select id="recordPatient">
+                          <option value="">Select Patient</option>
+                          <option value="1">Michael Johnson</option>
+                      </select>
+
+                      <select id="recordDoctor">
+                          <option value="">Select Doctor</option>
+                          <option value="1">Dr. Sarah Florence</option>
+                          <option value="5">Dr. John Smith</option>
+                      </select>
+
+                      <textarea id="recordDiagnosis" placeholder="Diagnosis"></textarea>
+                      <textarea id="recordTreatment" placeholder="Treatment"></textarea>
+                      <textarea id="recordPrescription" placeholder="Prescription"></textarea>
+                      <textarea id="recordNotes" placeholder="Notes"></textarea>
+
+                      <button onclick="addMedicalRecord()">Save Medical Record</button>
+
+                  </div>
+
+                  <div class="record-filters">
+                      <input type="text" id="filterRecordPatient" placeholder="Search patient name">
+                      <select id="filterRecordDoctor">
+                          <option value="">All Doctors</option>
+                      </select>
+                      <input type="date" id="filterRecordDateFrom">
+                      <input type="date" id="filterRecordDateTo">
+                      <button onclick="applyRecordFilters()">Filter</button>
+                      <button onclick="resetRecordFilters()">Reset</button>
+                  </div>
+
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Patient</th>
+                              <th>Doctor</th>
+                              <th>Diagnosis</th>
+                              <th>Treatment</th>
+                              <th>Date</th>
+                              <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody id="medicalRecordsTable"></tbody>
+                  </table>
+
+                  <div id="recordsPagination"></div>
+
+              </div>
+
+              <div class="patient-form">
+                  <input type="text" id="patientName" placeholder="Full Name">
+                  <input type="text" id="patientGender" placeholder="Gender">
+                  <input type="date" id="patientDOB">
+                  <input type="text" id="patientPhone" placeholder="Phone">
+                  <input type="email" id="patientEmail" placeholder="Email">
+                  <input type="text" id="patientAddress" placeholder="Address">
+                  <input type="text" id="patientMedicalNumber" placeholder="Medical Number">
+                  <button onclick="addPatient()">Register Patient</button>
+              </div>
+
+              <div class="panel">
+
+                 <h2>Patients Management</h2>
+
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Gender</th>
+                              <th>Phone</th>
+                              <th>Medical Number</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody id="patientsTable"></tbody>
+                  </table>
+
+              </div>
+
+              <div class="panel" id="donations-section">
+
+                  <h2>Recent Donations</h2>
+
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Donor</th>
+                              <th>Email</th>
+                              <th>Amount</th>
+                              <th>Payment</th>
+                              <th>Date</th>
+                          </tr>
+                      </thead>
+                      <tbody id="donationsTable"></tbody>
+                  </table>
+
+              </div>
+
+              <div class="panel" id="appointments-section">
+
+                  <h2>Appointment Management</h2>
+
+                  <div class="appointment-filters">
+                      <select id="filterStatus">
+                          <option value="">All Statuses</option>
+                          <option value="Pending">Pending</option>
+                          <option value="Approved">Approved</option>
+                          <option value="Rejected">Rejected</option>
+                          <option value="Completed">Completed</option>
+                          <option value="Cancelled">Cancelled</option>
+                      </select>
+                      <input type="text" id="filterDepartment" placeholder="Department">
+                      <select id="filterDoctor">
+                          <option value="">All Doctors</option>
+                      </select>
+                      <input type="date" id="filterDateFrom">
+                      <input type="date" id="filterDateTo">
+                      <input type="text" id="filterSearch" placeholder="Search patient name">
+                      <button onclick="applyAppointmentFilters()">Filter</button>
+                      <button onclick="resetAppointmentFilters()">Reset</button>
+                  </div>
+
+                  <div class="appointment-form">
+                      <input type="text" id="appointmentName" placeholder="Patient Name">
+                      <input type="email" id="appointmentEmail" placeholder="Email">
+                      <input type="text" id="appointmentPhone" placeholder="Phone">
+                      <input type="text" id="appointmentDepartment" placeholder="Department">
+                      <input type="date" id="appointmentDate">
+                      <select id="appointmentDoctor">
+                          <option value="">Unassigned</option>
+                      </select>
+                      <textarea id="appointmentNotes" placeholder="Notes"></textarea>
+                      <button onclick="addAppointment()">Add Appointment</button>
+                  </div>
+
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Patient</th>
+                              <th>Contact</th>
+                              <th>Department</th>
+                              <th>Doctor</th>
+                              <th>Date</th>
+                              <th>Status</th>
+                              <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody id="appointmentsTable"></tbody>
+                  </table>
+
+                  <div id="appointmentsPagination"></div>
+
+              </div>
+
+              <!-- EDIT APPOINTMENT MODAL -->
+
+              <div id="editAppointmentModal" class="hidden">
+                  <div class="modal-content">
+                      <h2>Edit Appointment</h2>
+                      <input type="hidden" id="editAppointmentId">
+                      <input type="text" id="editAppointmentName" placeholder="Patient Name">
+                      <input type="email" id="editAppointmentEmail" placeholder="Email">
+                      <input type="text" id="editAppointmentPhone" placeholder="Phone">
+                      <input type="text" id="editAppointmentDepartment" placeholder="Department">
+                      <input type="date" id="editAppointmentDate">
+                      <select id="editAppointmentDoctor">
+                          <option value="">Unassigned</option>
+                      </select>
+                      <textarea id="editAppointmentNotes" placeholder="Notes"></textarea>
+                      <button onclick="saveAppointmentEdit()">Save</button>
+                      <button onclick="document.getElementById('editAppointmentModal').classList.add('hidden')">Cancel</button>
+                  </div>
+              </div>
+
+              <!-- EDIT PATIENT MODAL -->
+
+              <div id="editPatientModal" class="modal" style="display:none">
+                  <div class="modal-content">
+                      <h2>Edit Patient</h2>
+                      <input type="hidden" id="editPatientId">
+                      <label>Full Name</label>
+                      <input id="editFullName" type="text">
+                      <label>Gender</label>
+                      <select id="editGender">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                      </select>
+                      <label>Date of Birth</label>
+                      <input id="editDOB" type="date">
+                      <label>Phone</label>
+                      <input id="editPhone" type="text">
+                      <label>Email</label>
+                      <input id="editEmail" type="email">
+                      <label>Address</label>
+                      <textarea id="editAddress"></textarea>
+                      <label>Medical Number</label>
+                      <input id="editMedicalNumber" type="text">
+                      <button onclick="updatePatient()">Save Changes</button>
+                      <button onclick="closeEditModal()">Cancel</button>
+                  </div>
+              </div>
+
+              <!-- EDIT DOCTOR MODAL -->
+
+              <div id="editDoctorModal" class="modal" style="display:none">
+                  <div class="modal-content">
+                      <h2>Edit Doctor</h2>
+                      <input type="hidden" id="editDoctorId">
+                      <label>Name</label>
+                      <input id="editDoctorName" type="text">
+                      <label>Specialization</label>
+                      <input id="editDoctorSpecialization" type="text">
+                      <label>Department</label>
+                      <input id="editDoctorDepartment" type="text">
+                      <label>Phone</label>
+                      <input id="editDoctorPhone" type="text">
+                      <label>Email</label>
+                      <input id="editDoctorEmail" type="email">
+                      <label>Image filename</label>
+                      <input id="editDoctorImage" type="text">
+                      <button onclick="updateDoctor()">Save Changes</button>
+                      <button onclick="closeEditDoctorModal()">Cancel</button>
+                  </div>
+              </div>
+
+              <!-- EDIT MEDICAL RECORD MODAL -->
+
+              <div id="editRecordModal" class="hidden">
+                  <div class="modal-content">
+                      <h2>Edit Medical Record</h2>
+                      <input type="hidden" id="editRecordId">
+                      <textarea id="editRecordDiagnosis" placeholder="Diagnosis"></textarea>
+                      <textarea id="editRecordTreatment" placeholder="Treatment"></textarea>
+                      <textarea id="editRecordPrescription" placeholder="Prescription"></textarea>
+                      <textarea id="editRecordNotes" placeholder="Notes"></textarea>
+                      <button onclick="saveMedicalRecordEdit()">Save</button>
+                      <button onclick="document.getElementById('editRecordModal').classList.add('hidden')">Cancel</button>
+                  </div>
+              </div>
+
+              <div class="panel" id="messages-section">
+
+                  <h2>Recent Messages</h2>
+
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Email</th>
+                              <th>Message</th>
+                              <th>Date</th>
+                          </tr>
+                      </thead>
+                      <tbody id="messagesTable"></tbody>
+                  </table>
+
+              </div>
+
+              <div class="panel activity">
+
+                  <h2> Recent Activity </h2>
+
+                  <ul>
+                     <li> New appointment received </li>
+                     <li> Donation recorded </li>
+                     <li> New message from patient </li>
+                     <li> System backup completed </li>
+                  </ul>
+
+              </div>
+
+           </section>
+
+      </main>
+
+      <script src="dashboard.js"></script>
+
+  </body>
+</html>

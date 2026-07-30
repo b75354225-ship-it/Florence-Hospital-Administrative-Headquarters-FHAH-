@@ -1,26 +1,53 @@
 const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
-const db = require('../db');
+const db = require('../config/db');
+const { body, validationResult } = require('express-validator');
+
+const validateDonation = [
+  body('donorName').trim().notEmpty().withMessage('Name is required').isLength({ max: 100 }).withMessage('Name is too long'),
+  body('donorEmail').trim().notEmpty().withMessage('Email is required').isEmail().withMessage('Invalid email format'),
+  body('donorPhone').trim().notEmpty().withMessage('Phone is required').isLength({ max: 20 }).withMessage('Phone number is too long'),
+  body('amount').notEmpty().withMessage('Amount is required').isFloat({ gt: 0 }).withMessage('Amount must be a positive number'),
+  body('anonymous').optional().isBoolean().withMessage('Invalid anonymous value'),
+];
+
+function handleValidation(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ error: errors.array()[0].msg });
+  }
+  next();
+}
 
 // POST /api/donations
 // Same pattern as payments.js — logs the donation, then requests a
 // hosted checkout link from Flutterwave for card/mobile-money giving.
 // Direct transfers to account 3204527565 (shown on donate.html) are
 // recorded manually by hospital finance staff, not through this route.
-router.post('/', async (req, res) => {
+router.post('/', validateDonation, handleValidation, async (req, res) => {
     const { donorName, donorEmail, donorPhone, amount, anonymous } = req.body;
-
-    if (!donorName || !donorEmail || !donorPhone || !amount) {
-        return res.status(400).json({ error: 'Missing required fields' });
-    }
 
     const txRef = `FHAH-DONATE-${Date.now()}`;
 
-    db.prepare(`
-        INSERT INTO donations (donor_name, donor_email, donor_phone, amount, anonymous, provider_reference, status)
-        VALUES (?, ?, ?, ?, ?, ?, 'initiated')
-    `).run(donorName, donorEmail, donorPhone, amount, anonymous ? 1 : 0, txRef);
+    const donationMessage = anonymous
+        ? `Phone: ${donorPhone} | Reference: ${txRef} | Anonymous donation`
+        : `Phone: ${donorPhone} | Reference: ${txRef}`;
+
+    const insertSql = `
+        INSERT INTO donations (name, email, amount, payment_method, message)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    db.query(
+        insertSql,
+        [anonymous ? 'Anonymous Donor' : donorName, donorEmail, amount, 'pending', donationMessage],
+        (insertErr) => {
+            if (insertErr) {
+                console.error('Donation insert error:', insertErr);
+            }
+        }
+    );
 
     if (!process.env.FLW_SECRET_KEY) {
         return res.status(501).json({

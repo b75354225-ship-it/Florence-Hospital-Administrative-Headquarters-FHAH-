@@ -1,9 +1,33 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../db");
+const db = require("../config/db");
+const { body, validationResult } = require("express-validator");
+
+// ================================
+// VALIDATION
+// ================================
+
+const validateAppointment = [
+  body("fullName").trim().notEmpty().withMessage("Full name is required").isLength({ max: 100 }).withMessage("Name is too long"),
+  body("phone").trim().notEmpty().withMessage("Phone is required").isLength({ max: 20 }).withMessage("Phone number is too long"),
+  body("email").trim().notEmpty().withMessage("Email is required").isEmail().withMessage("Invalid email format"),
+  body("department").trim().notEmpty().withMessage("Department is required").isLength({ max: 100 }).withMessage("Department name is too long"),
+  body("date").notEmpty().withMessage("Appointment date is required").isISO8601().withMessage("Invalid date format"),
+  body("message").optional({ checkFalsy: true }).isLength({ max: 1000 }).withMessage("Message is too long"),
+];
+
+function handleValidation(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      error: errors.array()[0].msg,
+    });
+  }
+  next();
+}
 
 // POST /api/appointments
-router.post("/", (req, res) => {
+router.post("/", validateAppointment, handleValidation, (req, res) => {
 
     const {
         fullName,
@@ -13,12 +37,6 @@ router.post("/", (req, res) => {
         date,
         message
     } = req.body;
-
-    if (!fullName || !phone || !email || !department || !date) {
-        return res.status(400).json({
-            error: "All required fields must be filled."
-        });
-    }
 
     const sql = `
         INSERT INTO appointments
@@ -40,7 +58,7 @@ router.post("/", (req, res) => {
 
             if (err) {
                 console.log(err);
-                return res.status(500).json(err);
+                return res.status(500).json({ error: "Unable to book appointment." });
             }
 
             res.status(201).json({

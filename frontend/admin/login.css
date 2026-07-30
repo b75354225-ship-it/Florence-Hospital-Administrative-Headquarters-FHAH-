@@ -1,0 +1,145 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+
+
+body{
+
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+    linear-gradient(
+        rgba(0,80,150,0.8),
+        rgba(0,40,90,0.9)
+    ),
+    url("../frontend/images/hospital.jpg");
+    background-size:cover;
+
+}
+
+
+
+.login-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+
+}
+
+
+
+.login-card{
+    background:white;
+    width:420px;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.25);
+
+}
+
+
+
+.logo-area{
+    text-align:center;
+    margin-bottom:30px;
+
+}
+
+
+
+.logo-area i{
+    font-size:55px;
+    color:#0066cc;
+
+}
+
+
+
+.logo-area h1{
+    font-size:40px;
+    color:#003366;
+
+}
+
+
+
+.logo-area p{
+    font-size:14px;
+    color:#777;
+
+}
+
+
+
+form h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#003366;
+
+}
+
+
+
+.input-group{
+    display:flex;
+    align-items:center;
+    border:1px solid #ddd;
+    padding:12px;
+    margin-bottom:20px;
+    border-radius:8px;
+
+}
+
+
+
+.input-group i{
+    color:#0066cc;
+    margin-right:10px;
+
+}
+
+
+
+.input-group input{
+    border:none;
+    outline:none;
+    width:100%;
+    font-size:16px;
+
+}
+
+
+
+button{
+    width:100%;
+    padding:14px;
+    background:#0066cc;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:17px;
+    cursor:pointer;
+
+}
+
+
+
+button:hover{
+    background:#004c99;
+
+}
+
+
+
+#message{
+    text-align:center;
+    margin-top:15px;
+    color:red;
+
+}

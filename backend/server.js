@@ -8,20 +8,21 @@
 // CORE DEPENDENCIES
 // ============================================
 
+require("dotenv").config();
+
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-
-require("dotenv").config();
-
+const chatRoutes = require("./routes/chat");
 
 
 // ============================================
 // DATABASE CONNECTION
 // ============================================
 
-require("./db");
+require("./config/db");
 
 
 
@@ -38,7 +39,7 @@ const authRoutes = require("./auth");
 const appointmentRoutes = require("./routes/appointments");
 const contactRoutes = require("./routes/contact");
 const donationRoutes = require("./routes/donations");
-
+const paymentRoutes = require("./routes/payments");
 
 // Admin routes
 const adminRoutes = require("./routes/admin");
@@ -60,8 +61,6 @@ const verifyToken = require("./middleware/authMiddleware");
 // ============================================
 
 const app = express();
-
-
 
 
 // ============================================
@@ -94,7 +93,14 @@ app.use(
 
 
 app.use(
-    helmet()
+    helmet({
+        contentSecurityPolicy: {
+            directives: {
+                ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+                "script-src-attr": ["'unsafe-inline'"],
+            },
+        },
+    })
 );
 
 app.use(
@@ -109,6 +115,21 @@ app.use(
     express.urlencoded({
         extended: true
     })
+);
+
+
+// ============================================
+// SERVE FHAH FRONTEND WEBSITE
+// ============================================
+
+const frontendPath = path.join(
+    __dirname,
+    "../frontend"
+);
+
+
+app.use(
+    express.static(frontendPath)
 );
 
 app.use(
@@ -126,38 +147,25 @@ app.use(
 
 app.get("/", (req,res)=>{
 
-
-    res.json({
-
-        hospital:
-        "Florence Hospital Administrative Headquarters",
-
-
-        system:
-        "FHAH Backend API",
-
-
-        status:
-        "Online",
-
-
-        timestamp:
-        new Date()
-
-    });
-
+    res.sendFile(
+        path.join(
+            frontendPath,
+            "index.html"
+        )
+    );
 
 });
-
-
-
-
-
 
 
 // ============================================
 // PUBLIC API ROUTES
 // ============================================
+
+app.use(
+    "/api/chat",
+    chatRoutes
+);
+
 
 
 app.use(
@@ -179,11 +187,10 @@ app.use(
     donationRoutes
 );
 
-
-
-
-
-
+app.use(
+    "/api/payments",
+    paymentRoutes
+);
 
 // ============================================
 // AUTHENTICATION ROUTES
@@ -194,11 +201,6 @@ app.use(
     "/api/auth",
     authRoutes
 );
-
-
-
-
-
 
 
 
@@ -241,17 +243,6 @@ app.use(
 );
 
 
-
-
-
-
-
-
-
-
-
-
-
 // ============================================
 // PROTECTED ADMIN TEST ROUTE
 // ============================================
@@ -282,40 +273,28 @@ app.get(
 
 );
 
-
-
-
-
-
-
-
 // ============================================
 // 404 NOT FOUND HANDLER
 // ============================================
 
 
 app.use(
+(req,res)=>{
 
-    (req,res)=>{
-
-
-        res.status(404).json({
-
-            message:
-            "API endpoint not found"
-
+    if(req.path.startsWith("/api")){
+        return res.status(404).json({
+            message:"API endpoint not found"
         });
-
-
     }
 
-);
+    res.sendFile(
+        path.join(
+            __dirname,
+            "../frontend/index.html"
+        )
+    );
 
-
-
-
-
-
+});
 
 
 // ============================================
@@ -346,54 +325,42 @@ app.use(
 );
 
 
-
-
-
-
-
-
 // ============================================
 // SERVER START
 // ============================================
 
 
-const PORT =
-process.env.PORT || 5000;
-
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || "0.0.0.0";
 
 
 app.listen(
-
     PORT,
+    HOST,
+    () => {
 
-    ()=>{
-
-
-        console.log(
-            "===================================="
-        );
-
-
-        console.log(
-            "FHAH BACKEND SERVER RUNNING"
-        );
-
-
-        console.log(
-            `PORT: ${PORT}`
-        );
-
-
-        console.log(
-            "DATABASE: CONNECTED"
-        );
-
-
-        console.log(
-            "===================================="
-        );
-
+        console.log("====================================");
+        console.log("FHAH BACKEND SERVER RUNNING");
+        console.log(`HOST: ${HOST}`);
+        console.log(`PORT: ${PORT}`);
+        console.log("DATABASE: CONNECTED");
+        console.log("====================================");
 
     }
-
 );
+
+// ============================================
+// ADMIN PANEL ROUTING
+// ============================================
+
+
+app.use(
+    "/admin",
+    express.static(
+        path.join(
+            frontendPath,
+            "admin"
+        )
+    )
+);
+
