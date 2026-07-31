@@ -1,4 +1,4 @@
-require('dotenv').config();
+﻿require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -17,7 +17,6 @@ app.use('/api/patients', require('./routes/patients'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/messages', require('./routes/messages'));
 app.use('/api/medical-records', require('./routes/medical-records'));
-app.use('/api/reset-password', require('./routes/resetPassword'));
 app.use('/api/donations-admin', require('./routes/donations-admin'));
 app.use('/api/chat', require('./routes/chat'));
 

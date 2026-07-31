@@ -1,14 +1,19 @@
-const express = require('express');
+﻿const express = require('express');
 const router = express.Router();
-const db = require('../db');
+const db = require('../config/db');
 
-// POST /api/chat-messages — best-effort transcript logging from the
-// front-end chat widget so support staff can review conversations.
+// POST /api/chat-messages
 router.post('/', (req, res) => {
     const { message } = req.body;
     if (!message) return res.status(400).json({ error: 'Missing message' });
-    db.prepare('INSERT INTO chat_messages (message) VALUES (?)').run(message);
-    res.status(201).json({ ok: true });
+
+    db.query('INSERT INTO chat_messages (message) VALUES (?)', [message], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Failed to log message' });
+        }
+        res.status(201).json({ ok: true, id: result.insertId });
+    });
 });
 
 module.exports = router;

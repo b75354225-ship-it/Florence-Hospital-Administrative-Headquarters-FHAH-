@@ -5,3 +5,5 @@ backend/db/*.db
 backend/fhah_backup.sql
 backend/archive/
 backend/backup/
+
+backend/routes/resetPassword.js

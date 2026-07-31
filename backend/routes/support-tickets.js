@@ -1,6 +1,6 @@
-const express = require('express');
+﻿const express = require('express');
 const router = express.Router();
-const db = require('../db');
+const db = require('../config/db');
 
 // POST /api/support-tickets
 router.post('/', (req, res) => {
@@ -8,18 +8,30 @@ router.post('/', (req, res) => {
     if (!name || !email || !category || !message) {
         return res.status(400).json({ error: 'Missing required fields' });
     }
-    const stmt = db.prepare(`
+
+    const sql = `
         INSERT INTO support_tickets (name, email, phone, category, message)
         VALUES (?, ?, ?, ?, ?)
-    `);
-    const result = stmt.run(name, email, phone || '', category, message);
-    res.status(201).json({ id: result.lastInsertRowid, status: 'open' });
+    `;
+
+    db.query(sql, [name, email, phone || null, category, message], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Ticket creation failed' });
+        }
+        res.status(201).json({ id: result.insertId, status: 'open' });
+    });
 });
 
-// GET /api/support-tickets — for an internal support dashboard
+// GET /api/support-tickets
 router.get('/', (req, res) => {
-    const rows = db.prepare('SELECT * FROM support_tickets ORDER BY created_at DESC').all();
-    res.json(rows);
+    db.query('SELECT * FROM support_tickets ORDER BY created_at DESC', (err, rows) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Unable to fetch tickets' });
+        }
+        res.json(rows);
+    });
 });
 
 module.exports = router;

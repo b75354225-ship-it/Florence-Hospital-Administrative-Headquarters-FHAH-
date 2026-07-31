@@ -1,28 +1,42 @@
-const express = require('express');
+﻿const express = require('express');
 const router = express.Router();
-const db = require('../db');
+const db = require('../config/db');
 
 // POST /api/appointments — create a new appointment request
 router.post('/', (req, res) => {
-    const { fullName, phone, email, department, date, time, notes } = req.body;
+    const { name, phone, email, department, appointment_date, doctor, message } = req.body;
 
-    if (!fullName || !phone || !email || !department || !date || !time) {
+    if (!name || !phone || !email || !department || !appointment_date) {
         return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const stmt = db.prepare(`
-        INSERT INTO appointments (full_name, phone, email, department, appointment_date, appointment_time, notes)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    `);
-    const result = stmt.run(fullName, phone, email, department, date, time, notes || '');
+    const sql = `
+        INSERT INTO appointments (name, email, phone, department, appointment_date, doctor, message, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 'Pending')
+    `;
 
-    res.status(201).json({ id: result.lastInsertRowid, status: 'pending' });
+    db.query(
+        sql,
+        [name, email, phone, department, appointment_date, doctor || null, message || null],
+        (err, result) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Appointment creation failed' });
+            }
+            res.status(201).json({ id: result.insertId, status: 'Pending' });
+        }
+    );
 });
 
-// GET /api/appointments — list all (for an internal admin dashboard you build later)
+// GET /api/appointments — list all
 router.get('/', (req, res) => {
-    const rows = db.prepare('SELECT * FROM appointments ORDER BY created_at DESC').all();
-    res.json(rows);
+    db.query('SELECT * FROM appointments ORDER BY created_at DESC', (err, rows) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Unable to fetch appointments' });
+        }
+        res.json(rows);
+    });
 });
 
 module.exports = router;
