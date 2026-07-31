@@ -1,9 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-
 const app = express();
-
 const allowedOrigins = (process.env.CORS_ORIGIN || '').split(',').map(s => s.trim()).filter(Boolean);
 app.use(cors({ origin: allowedOrigins.length ? allowedOrigins : true }));
 app.use(express.json());
@@ -14,6 +12,14 @@ app.use('/api/support-tickets', require('./routes/support-tickets'));
 app.use('/api/chat-messages', require('./routes/chat-messages'));
 app.use('/api/payments', require('./routes/payments'));
 app.use('/api/donations', require('./routes/donations'));
+app.use('/api/doctors', require('./routes/doctors'));
+app.use('/api/patients', require('./routes/patients'));
+app.use('/api/admin', require('./routes/admin'));
+app.use('/api/messages', require('./routes/messages'));
+app.use('/api/medical-records', require('./routes/medical-records'));
+app.use('/api/reset-password', require('./routes/resetPassword'));
+app.use('/api/donations-admin', require('./routes/donations-admin'));
+app.use('/api/chat', require('./routes/chat'));
 
 app.get('/api/health', (req, res) => res.json({ ok: true, time: new Date().toISOString() }));
 

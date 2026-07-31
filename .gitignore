@@ -1,3 +1,7 @@
 backend/node_modules/
 backend/db/*.db
 .env
+
+backend/fhah_backup.sql
+backend/archive/
+backend/backup/
