@@ -1,5 +1,5 @@
-/*==============================================================
-    main.js — shared front-end behaviour for every page.
+﻿/*==============================================================
+    main.js â€” shared front-end behaviour for every page.
     Runs after the header/footer partials are injected
     (listens for the 'chromeReady' event from include.js).
 ================================================================*/
@@ -145,7 +145,7 @@ async function submitForm(endpoint, data, statusEl, successMsg){
         statusEl.className = 'form-status success';
         return true;
     }catch(err){
-        // Backend not reachable yet — still confirm receipt locally so the
+        // Backend not reachable yet â€” still confirm receipt locally so the
         // form doesn't feel broken while you finish wiring up the API.
         console.warn('API not reachable, falling back:', err);
         statusEl.textContent = successMsg + ' (Note: connect the backend in /backend to actually store this.)';
@@ -163,15 +163,24 @@ function initAppointmentForm(){
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const statusEl = document.getElementById('appointmentStatus');
-        const data = Object.fromEntries(new FormData(form).entries());
+        const raw = Object.fromEntries(new FormData(form).entries());
+        const data = {
+            name: raw.fullName,
+            phone: raw.phone,
+            email: raw.email,
+            department: raw.department,
+            appointment_date: raw.date,
+            doctor: raw.doctor,
+            message: (raw.time ? 'Preferred time: ' + raw.time : '') + (raw.notes ? ' - ' + raw.notes : '')
+        };
         const btn = form.querySelector('button[type="submit"]');
         btn.disabled = true; btn.textContent = 'Submitting...';
-        await submitForm('/appointments', data, statusEl, `Thank you ${data.fullName || ''}, your appointment request has been received. Our team will confirm by phone or email shortly.`);
+        const successMsg = 'Thank you ' + (raw.fullName || '') + ', your appointment request has been received. Our team will confirm by phone or email shortly.';
+        await submitForm('/appointments', data, statusEl, successMsg);
         btn.disabled = false; btn.textContent = 'Request Appointment';
         form.reset();
     });
 }
-
 /*==============================
     CONTACT / FEEDBACK FORM
 ==============================*/
@@ -184,7 +193,7 @@ function initContactForm(){
         const data = Object.fromEntries(new FormData(form).entries());
         const btn = form.querySelector('button[type="submit"]');
         btn.disabled = true; btn.textContent = 'Sending...';
-        await submitForm('/contact', data, statusEl, 'Thanks for reaching out — a member of our team will get back to you soon.');
+        await submitForm('/contact', data, statusEl, 'Thanks for reaching out â€” a member of our team will get back to you soon.');
         btn.disabled = false; btn.textContent = 'Send Message';
         form.reset();
     });
@@ -224,7 +233,7 @@ function initChatWidget(){
         { match: /appointment|book/i, reply: 'You can book an appointment on our Appointments page, or call +256 700 123 456. Would you like the link? appointments.html' },
         { match: /bill|pay|payment/i, reply: 'You can pay a hospital bill securely on our Payments page: payments.html. You will need your invoice/patient number.' },
         { match: /donat/i, reply: 'Thank you for your interest in supporting FHAH! Visit donate.html to give via mobile money, bank transfer or card.' },
-        { match: /visit|hour/i, reply: 'General visiting hours are 10:00 AM – 6:00 PM daily. The Emergency Department is open 24/7.' },
+        { match: /visit|hour/i, reply: 'General visiting hours are 10:00 AM â€“ 6:00 PM daily. The Emergency Department is open 24/7.' },
         { match: /emergency/i, reply: 'For emergencies, please call our 24-hour hotline at +256 709 543 181 immediately or go to the nearest Emergency entrance.' },
     ];
 
@@ -298,7 +307,7 @@ function initPaymentPage(){
 
         // This calls your backend, which should create the transaction and
         // return a checkout link/reference from your payment provider
-        // (e.g. Flutterwave or Paystack — see backend/routes/payments.js).
+        // (e.g. Flutterwave or Paystack â€” see backend/routes/payments.js).
         const btn = form.querySelector('button[type="submit"]');
         btn.disabled = true; btn.textContent = 'Processing...';
         try{
@@ -315,7 +324,7 @@ function initPaymentPage(){
             throw new Error('No checkout URL returned');
         }catch(err){
             console.warn('Payment API not reachable yet:', err);
-            statusEl.textContent = 'This form is ready to go — connect it to a payment provider (Flutterwave/Paystack/PayPal) in backend/routes/payments.js to start accepting real payments. See backend/README.md.';
+            statusEl.textContent = 'This form is ready to go â€” connect it to a payment provider (Flutterwave/Paystack/PayPal) in backend/routes/payments.js to start accepting real payments. See backend/README.md.';
             statusEl.className = 'form-status error';
         }
         btn.disabled = false; btn.textContent = 'Proceed to Secure Payment';
@@ -374,3 +383,4 @@ function initDonatePage(){
         form.reset();
     });
 }
+
