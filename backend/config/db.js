@@ -1,16 +1,19 @@
 ﻿const mysql = require("mysql2");
 require("dotenv").config();
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
-    ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : undefined
+    ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
-db.connect((err) => {
+db.getConnection((err, connection) => {
     if (err) {
         console.log("Database connection failed:");
         console.log(err);
@@ -18,6 +21,7 @@ db.connect((err) => {
     }
 
     console.log("MySQL Database connected successfully!");
+    connection.release();
 
     db.query(`
         CREATE TABLE IF NOT EXISTS chat_messages (
