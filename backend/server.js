@@ -19,8 +19,10 @@ app.use('/api/messages', require('./routes/messages'));
 app.use('/api/medical-records', require('./routes/medical-records'));
 app.use('/api/donations-admin', require('./routes/donations-admin'));
 app.use('/api/chat', require('./routes/chat'));
+app.use('/api/auth', require('./routes/auth'));
 
 app.get('/api/health', (req, res) => res.json({ ok: true, time: new Date().toISOString() }));
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`FHAH backend running on http://localhost:${PORT}`));
+
